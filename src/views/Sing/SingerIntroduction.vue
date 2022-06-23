@@ -129,7 +129,7 @@ export default {
   font-weight: bolder;
   cursor: pointer;
   border: #ffffff 2px solid;
-  opacity: 0.8;
+  opacity: 0.9;
   position: fixed;
   bottom: 6vh;
   right: 1vw;
@@ -137,6 +137,11 @@ export default {
   width: 3vh;
   text-align: center;
   border-radius: 80%;
+}
+
+.toTop:hover , .ListFont:hover{
+  color: #c6b58d;
+  border-color: #c6b58d;
 }
 
 @media screen and (min-width: 1000px) {
