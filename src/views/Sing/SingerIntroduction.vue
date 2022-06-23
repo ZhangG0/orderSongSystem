@@ -2,6 +2,7 @@
 <div class="background_div flexCenter">
 
   <div class="SingerListDiv" >
+    <span class="toTop" @click="toTop">⇪</span>
     <div class="ListHead">歌手列表</div>
     <el-descriptions
 
@@ -10,19 +11,19 @@
         :column="4">
       <el-descriptions-item class="SingerListFirst" width="33%" align="center">
         <br>
-<!--        <el-image :src="require('../../assets/img/'+singer.singerImg+'')" fit="fill"></el-image>-->
+        <el-image :src="singer.avatarUrl" fit="contain" style="height: 10vh"></el-image>
       </el-descriptions-item>
 
-      <el-descriptions-item width="33%" >
+      <el-descriptions-item width="33%" align="center" >
         <br>{{singer.singerName}}
-<!--        <br>{{singer.information}}-->
+        <br>{{singer.information}}
       </el-descriptions-item>
 
 <!--      <el-descriptions-item width="30%" label="歌手简介"> {{ singer.singerIntro }}</el-descriptions-item>-->
 
 
       <el-descriptions-item width="33%" align="center" >
-<!--        <br>-->
+        <br>
         <span>
           演唱次数<br>{{ singer.mySing }}<br>
           入驻时间<br>{{ singer.registerTime }}
@@ -30,7 +31,7 @@
       </el-descriptions-item>
 
     </el-descriptions>
-    <div class="ListHead">↑ 返回顶部 ↑</div>
+    <div class="ListFont" @click="toTop">↑ 返回顶部 ↑</div>
 
 
 
@@ -49,65 +50,45 @@ export default {
   name: "SingerIntroduction",
   data(){
     return{
-      tableData:[
-        // {
-        //   id:"1",
-        //   singerImg:"board.png",
-        //   singerName:"歌手",
-        //   singerClass:"医学信息工程",
-        //   singerIntro:"我热爱唱歌惹按十的撒离开就阿里山的加斯大家奥斯陆冬季埃里克森艰苦拉萨",
-        //   singTime:"100",
-        //   registerTime:"yyyy"
-        // },
-        // {
-        //   id:"2",
-        //   singerImg:"board.png",
-        //   singerName:"歌手",
-        //   singerClass:"医学信息工程",
-        //   singerIntro:"我热爱唱歌",
-        //   singTime:"100",
-        //   registerTime:"yyyy"
-        // },
-        // {
-        //   id:"3",
-        //   singerImg:"board.png",
-        //   singerName:"歌手",
-        //   singerClass:"医学信息工程",
-        //   singerIntro:"我热爱唱歌",
-        //   singTime:"100",
-        //   registerTime:"yyyy"
-        // },
-        // {
-        //   id:"3",
-        //   singerImg:"board.png",
-        //   singerName:"歌手",
-        //   singerClass:"医学信息工程",
-        //   singerIntro:"我热爱唱歌",
-        //   singTime:"100",
-        //   registerTime:"yyyy"
-        // },
-        // {
-        //   id:"3",
-        //   singerImg:"board.png",
-        //   singerName:"歌手",
-        //   singerClass:"医学信息工程",
-        //   singerIntro:"我热爱唱歌",
-        //   singTime:"100",
-        //   registerTime:"yyyy"
-        // },
-      ],
+      tableData:[],
     }
   },
-  created() {
-      singRequest.get("/singer/find-all-singer").then(res =>{
-        // console.log(res);
-        this.tableData = res.data;
-        for (let i = 0; i < this.tableData.length; i++) {
-          let arr = this.tableData[i].registerTime.split(' ');
-          this.tableData[i].registerTime = arr[0];
-        }
-      })
+  beforeCreate() {
+    singRequest.get("/singer/find-all-singer").then(res =>{
+      // console.log(res);
+      this.tableData = res.data;
+      for (let i = 0; i < this.tableData.length; i++) {
+        let arr = this.tableData[i].registerTime.split(' ');
+        this.tableData[i].registerTime = arr[0];
+      }
+    })
   },
+  created() {
+      // singRequest.get("/singer/find-all-singer").then(res =>{
+      //   // console.log(res);
+      //   this.tableData = res.data;
+      //   for (let i = 0; i < this.tableData.length; i++) {
+      //     let arr = this.tableData[i].registerTime.split(' ');
+      //     this.tableData[i].registerTime = arr[0];
+      //   }
+      // })
+  },
+  methods:{
+    toTop(){
+      // 回到顶部，速度从快到慢
+      let timer = setInterval(function () {
+        let osTop =
+            document.documentElement.scrollTop || document.body.scrollTop;
+        let speed = Math.floor(-osTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+            osTop + speed;
+        // this.isTop = true;
+        if (osTop === 0) {
+          clearInterval(timer);
+        }
+      }, 20);
+    }
+  }
 
 }
 </script>
@@ -117,7 +98,9 @@ export default {
 .SingerListDiv{
   font-size: 1vw;
   width: 85vw;
-  margin: 5vh 7vw;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  z-index: 5;
 }
 
 .SingerList{
@@ -129,7 +112,7 @@ export default {
   height: 20%;
 }
 
-.ListHead{
+.ListHead,.ListFont{
   text-align: center;
   font-size: medium;
   color: #03033b;
@@ -137,5 +120,34 @@ export default {
   font-weight: bold;
   background-color: #e6e6e6;
 
+}
+.ListFont{
+  cursor: pointer;
+}
+
+.toTop{
+  font-weight: bolder;
+  cursor: pointer;
+  border: #ffffff 2px solid;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 6vh;
+  right: 1vw;
+  height: 3vh;
+  width: 3vh;
+  text-align: center;
+  border-radius: 80%;
+}
+
+@media screen and (min-width: 1000px) {
+  .SingerListDiv{
+    width: 70vw;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .SingerListDiv{
+    width: 50vw;
+  }
 }
 </style>
