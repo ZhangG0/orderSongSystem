@@ -1,5 +1,7 @@
-# springboot-vue-demo
+# 成都中医药大学校声乐队点歌系统
 
+## 基于Vue-cli Element-Plus 
+开发者:江子麟，江子龙
 ## Project setup
 ```
 npm install
@@ -14,6 +16,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
