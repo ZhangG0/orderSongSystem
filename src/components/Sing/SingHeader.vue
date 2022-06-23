@@ -13,7 +13,7 @@
 
 
 
-    <div v-if="userShow" class="user" @click="toPersonInfo">
+    <div v-show="userShow" class="user" @click="toPersonInfo">
       <span>
         {{ username }}
      </span>
