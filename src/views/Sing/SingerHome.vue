@@ -33,10 +33,16 @@ export default {
     }
   },
   created() {
-
+    // sessionStorage.setItem("user",{"username":"666"});
     //监测是否登录
+    //BUG预警 用户表单注入后可能会有BUG
     if (!sessionStorage.user && !localStorage.user){
-      this.$router.push("/singHome/ManagementSystemLogin")
+      this.$router.push("/singHome/ManagementSystemLogin");
+      console.log("in singerName!!!!")
+    }else if (!(JSON.parse(sessionStorage.getItem("user")).singerName)
+           && !JSON.parse(localStorage.getItem("user")).singerName){
+      this.$router.push("/singHome/ManagementSystemLogin");
+      console.log("in singerName")
     }
 
   },
@@ -132,8 +138,5 @@ export default {
 </style>
 
 <style>
-.message{
-  width: 5vw;
-  height: 50px;
-}
+
 </style>
