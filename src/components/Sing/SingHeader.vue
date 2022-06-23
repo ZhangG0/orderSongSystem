@@ -77,7 +77,7 @@ header,footer{
   color: white;
   background-color: #d5432f;
   text-align: center;
-  z-index: 5;
+  z-index: 10;
   position: fixed;
 }
 

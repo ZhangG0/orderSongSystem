@@ -101,7 +101,6 @@ export default {
   width: 85vw;
   margin-top: 3vh;
   margin-bottom: 5vh;
-  z-index: 5;
 }
 
 .SingerList{
