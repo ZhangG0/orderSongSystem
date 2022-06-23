@@ -14,6 +14,7 @@
         <el-image :src="singer.avatarUrl" fit="contain" style="height: 10vh"></el-image>
       </el-descriptions-item>
 
+
       <el-descriptions-item width="33%" align="center" >
         <br>{{singer.singerName}}
         <br>{{singer.information}}
