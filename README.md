@@ -1,6 +1,6 @@
-# 成都中医药大学校声乐队点歌系统
+# 成都中医药大学校声乐队点歌系统前端
 
-## 基于Vue-cli Element-Plus 
+基于Vue-cli Element-Plus\
 开发者:江子麟，江子龙
 ## Project setup
 ```

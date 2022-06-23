@@ -127,16 +127,18 @@ export default {
 
 .toTop{
   font-weight: bolder;
+  font-size: 3vh;
   cursor: pointer;
-  border: #ffffff 2px solid;
-  opacity: 0.9;
+  /*border: #ffffff 2px solid;*/
+  /*border-radius: 80%;*/
+  /*opacity: 0.9;*/
   position: fixed;
   bottom: 6vh;
   right: 1vw;
   height: 3vh;
   width: 3vh;
   text-align: center;
-  border-radius: 80%;
+
 }
 
 .toTop:hover , .ListFont:hover{
