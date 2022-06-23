@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	
+}
+/* 点歌系统用 */
+.background_div{
+    background-color: transparent;
+    color: white;
+    padding-top: 2.2vh;
+
+}
+
+.flexCenter{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+/*点歌系统 END*/

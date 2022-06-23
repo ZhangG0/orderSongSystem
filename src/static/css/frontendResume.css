@@ -1,0 +1,141 @@
+body{
+    font-size: 15px;
+    background-color: #e6e6e6;
+    line-height: 23px;
+}
+a{
+    text-decoration: none;
+    color: #000001;
+}
+a:hover{
+    color: #0070bf;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+div.resumeDiv{
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid #858282;
+    width: 680px;
+    background-color: #fdfdfe;
+    box-shadow:5px 20px 3px #444;
+    -moz-box-shadow:5px 5px 3px #444;
+    -webkit-box-shadow:5px 5px 3px #444;
+}
+div.infoDiv{
+    /*border: 1px solid red;*/
+}
+
+div.basicsInfo{
+    margin-top: 20px;
+    /*border: 1px red solid;*/
+}
+
+div.basicsInfo img{
+
+    float: right;
+    margin-right: 30px;
+    margin-top: -25px;
+    height: 130px;
+   /*border: 1px solid red;*/
+}
+
+div.basicsInfo div.personalInfo{
+    margin-top: 10px;
+}
+div.name{
+    font-weight: 700;
+    font-size: 22px;
+    padding: 5px 0px 10px 0px;
+}
+
+div.personalInfo td{
+    width: 210px;
+    height: 25px;
+}
+
+div.otherInfoDiv{
+    margin: 15px 5px;
+}
+
+div.headDiv{
+    font-weight: 600;
+    font-size: 17px;
+}
+div.blueLine{
+    border-bottom:3px solid #0070bf;
+}
+div.detailInfoDivFirst{
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 26px;
+    margin: 5px;
+}
+span.time{
+    float: right;
+
+}
+.name{
+    color: black;
+}
+span.honorImg:hover{
+    color: #0070bf;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+/*region 图片展示功能*/
+/*遮罩层实现*/
+.opacity {
+    opacity: 1;
+    background-color: #000;
+    z-index: 10;
+}
+
+/*图片展示框*/
+div.imgShowBlock{
+   position: fixed;
+    z-index: 15;
+    top: 23%;
+    left: 25%;
+	
+/* 	position: fixed;
+	z-index: 15;
+	text-align: center;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+ */
+}
+div.imgShowBlock img{
+    padding: 5px;
+    border: 5px solid gold;
+    width: 600px;
+    height: 500px;
+    display: none;
+    overflow: hidden;
+    background-color: #a49d9d;
+}
+/*取消按钮*/
+span.close{
+    display: none;
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-weight: bold;
+    color: grey;
+    border: 2px solid grey;
+    padding: 0px 3px;
+
+}
+span.close:hover{
+    cursor: pointer;
+    color: black;
+    border: 2px solid black;
+}
+
+/*endregion*/
+
