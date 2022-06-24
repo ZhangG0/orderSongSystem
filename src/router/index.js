@@ -153,6 +153,22 @@ const routes = [
         }
       },
       {
+        path: '/singHome/Login',
+        name:'UserLogin',
+        component:() => import("@/views/Sing/UserLogin"),
+        meta: {
+          title: '点歌系统登录'
+        }
+      },
+      {
+        path: '/singHome/Register',
+        name:'UserRegister',
+        component:() => import("@/views/Sing/UserRegister"),
+        meta: {
+          title: '点歌系统注册'
+        }
+      },
+      {
         path:'/singHome/personInfo',
         name:'PersonInfo',
         component:() => import("@/views/Sing/PersonInfo"),
