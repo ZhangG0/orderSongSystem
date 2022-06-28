@@ -5,7 +5,6 @@
     <span class="toTop" @click="toTop">⇪</span>
     <div class="ListHead">歌手列表</div>
     <el-descriptions
-
         v-for="singer in tableData"
         class="SingerList"
         :column="4">

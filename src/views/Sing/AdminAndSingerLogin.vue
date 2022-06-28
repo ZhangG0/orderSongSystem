@@ -94,16 +94,9 @@ export default {
         }).then(res =>{
           console.log(res);
           if (res.status === 200){
-            this.$message({
-              type:'success',
-              message:'登录成功',
-              center: true,
-              duration:1000
-            })
             sessionStorage.setItem("user",JSON.stringify(res.data))
             window.location.replace("/singHome/SingerHome")
             this.$router.push("/singHome/SingerHome")
-
           }else {
             this.$message({
               type:'error',

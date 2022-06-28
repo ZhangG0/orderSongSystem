@@ -43,7 +43,11 @@ export default {
     if (!sessionStorage.getItem("user")){
       this.userShow=false;
     }else {
+      console.log(this.username)
       this.username = JSON.parse(sessionStorage.getItem("user")).singerName;
+      if (!this.username){
+        this.username = JSON.parse(sessionStorage.getItem("user")).username;
+      }
     }
   },
   methods:{
