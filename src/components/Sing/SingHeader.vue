@@ -5,10 +5,11 @@
 
 
 
-    <!-- <mic class="Mic" /> -->
+
+    <!--    已登录：跳转Home-->
+    <!--    未登录：跳转用户登录-->
     <span @click="toSingHome">Music is My Life</span>
 
-    <!-- <headset class="Mic" /> -->
 
 
 
@@ -43,7 +44,6 @@ export default {
     if (!sessionStorage.getItem("user")){
       this.userShow=false;
     }else {
-      console.log(this.username)
       this.username = JSON.parse(sessionStorage.getItem("user")).singerName;
       if (!this.username){
         this.username = JSON.parse(sessionStorage.getItem("user")).username;
@@ -52,7 +52,12 @@ export default {
   },
   methods:{
     toSingHome(){
-      this.$router.push('/singHome')
+      if (!sessionStorage.getItem("user")){
+        this.$router.push('/singHome/Login')
+      }else {
+        this.$router.push('/singHome')
+      }
+
     },
     toManagementSystem(){
       this.$router.push('/singHome/ManagementSystemLogin');
