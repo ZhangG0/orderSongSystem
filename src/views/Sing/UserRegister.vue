@@ -27,6 +27,8 @@
         <el-button size="large" type="primary" @click="Register">注 &nbsp;&nbsp; 册</el-button>
       </el-form-item>
 
+
+
     </el-form>
   </div>
 </template>
@@ -112,6 +114,13 @@ export default {
             validator:validatePass
           }
         ],
+        major:[
+          {
+            required:true,
+            message:'请选择学院',
+            trigger:'blur',
+          },
+        ]
       }),
       options:[
         {
@@ -222,25 +231,25 @@ export default {
   },
   methods:{
     Register() {
-      //将级联选择器中选出的array变成string给后端
-      this.form.major=this.form.major[0]
-
-      if (this.form.password !== this.form.confirm){
-        this.$message({
-          type:"error",
-          message:"两次密码不一致，请再次确认密码",
-          center: true,
-          duration:1000
-        })
-        return
-      }
+      console.log(this.form.major)
 
       this.$refs.form.validate((valid) => {
             if (valid){
+
+              //将级联选择器中选出的array变成string给后端
+              this.form.major=this.form.major[0]
+
+              if (this.form.password !== this.form.confirm){
+                this.$message({
+                  type:"error",
+                  message:"两次密码不一致，请再次确认密码",
+                  center: true,
+                  duration:1000
+                })
+                return
+              }
               //请求后台数据
               singRequest.post("user/register",this.form).then(res =>{
-
-                console.log(res)
                 if (res.status === 200){
                   this.$message({
                     type:"success",
@@ -249,7 +258,6 @@ export default {
                     duration:1000
                   })
                   sessionStorage.setItem("phone",this.form.phone)
-                  console.log(sessionStorage.getItem("phone"))
                   this.$router.push("/singHome/Login")
                 }else {
                   this.$message({
