@@ -1,5 +1,5 @@
 <template>
-  <div class="background_div flexCenter">
+  <div class="background_div">
     <div class="Text">歌手注册</div>
     <el-form class="registerForm" size="default" :model="form" :rules="rules" ref="form">
 
@@ -195,6 +195,11 @@ export default {
 .registerForm {
   margin: 5vh auto;
   width: 80vw;
+  /* height: 80vh; */
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: flex-start;
 
 }
 
