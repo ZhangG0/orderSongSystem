@@ -61,7 +61,7 @@
 				<el-button color="#d5c397" round>留言板</el-button>
 			</div>
 			<div>
-				<el-button color="#d5c397" round>问题反馈</el-button>
+				<el-button color="#d5c397" round>关于我们</el-button>
 			</div>
 
 			
@@ -146,7 +146,7 @@ export default {
 		 margin: 20vh auto 0 auto;
 		
 	}
-	.container div{
+	.container>div{
 		border: 0.0625rem solid transparent;
 		background-color: transparent;
 		margin: 1%;
@@ -157,7 +157,7 @@ export default {
 	}
 	
 	
-	.container div .el-button{
+	.container>div>.el-button{
 		width: 100%;
 		height: 100%;
 		color: white;
