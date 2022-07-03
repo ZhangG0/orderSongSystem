@@ -15,6 +15,7 @@
 
 
     <div v-show="userShow" class="user" @click="toPersonInfo">
+<!--      {{ username }}-->
       <span>
         {{ username }}
      </span>
@@ -74,9 +75,6 @@ export default {
 
 <style scoped>
 
-*{
-
-}
 header,footer{
   font-size: smaller;
   font-family: fantasy;
@@ -96,13 +94,13 @@ footer{
   bottom: 0;
 }
 
-footer span:hover,header span:hover{
+footer>span:hover,header>span:hover{
   color: #313134;
   cursor: pointer;
   /* font-weight: bold; */
 }
 
-.back  {
+.back{
   color: white;
   position: absolute;
   float: left;
@@ -116,7 +114,7 @@ footer span:hover,header span:hover{
 
 .user{
   font-family: cursive;
-  font-size: 1vmin;
+  font-size: 0.6rem;
   font-weight: bold;
   color: white;
   position: absolute;
