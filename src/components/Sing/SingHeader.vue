@@ -126,6 +126,11 @@ footer>span:hover,header>span:hover{
   background-color: #bb3221;
   border: #9b3123 solid 1px;
   display: inline-block;
+  cursor: pointer;
+}
+
+header>div:hover{
+  background-color: #9b3123;
 }
 
 
