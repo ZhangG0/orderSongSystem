@@ -2,13 +2,18 @@
   <header>
 
       <el-icon class="back" @click="back()"><ArrowLeftBold /></el-icon>
+<!--    watch监听-->
+
 
 
 
 
     <!--    已登录：跳转Home-->
-    <!--    未登录：跳转用户登录-->
-    <span @click="toSingHome">Music is My Life</span>
+    <!--    未登录：跳转用户登录 Music is My Life-->
+    <span @click="toSingHome">
+      <span v-if="titleShow" class="backRight">{{ title }}</span>
+      <span v-else>Music is My Life</span>
+    </span>
 
 
 
@@ -29,19 +34,21 @@
 </template>
 
 <script>
-
-import Header from "@/components/Header";
 export default {
   name: "SingHeader",
-  components: {Header},
   data(){
     return{
       username:"",
       userShow:true,
+      titleShow:true,
+      whiteTitle:["校声乐队点歌系统","今日歌单"],
+      title:this.$route.meta.title,
     }
   },
   created() {
     // sessionStorage.setItem("username","江子麟")
+
+    //判断是否登录，登录的是歌手还是用户
     if (!sessionStorage.getItem("user")){
       this.userShow=false;
     }else {
@@ -50,7 +57,10 @@ export default {
         this.username = JSON.parse(sessionStorage.getItem("user")).username;
       }
     }
+    //判断是否需要显示title
+    this.titleShow = !this.whiteTitle.includes(this.title);
   },
+
   methods:{
     toSingHome(){
       if (!sessionStorage.getItem("user")){
@@ -112,6 +122,23 @@ footer>span:hover,header>span:hover{
   cursor: pointer;
 }
 
+.backRight{
+  font-family: cursive;
+  font-size: 0.6rem;
+  font-weight: bold;
+  height: 2.5vh;
+  color: white;
+  text-align: center;
+  z-index: 10;
+  padding:0 2vw;
+  display: inline-block;
+  width: 35vw;
+  /*position: absolute;*/
+  /*float: left;*/
+  /*left: 4vh;*/
+  background-color: #bb3221;
+}
+
 .user{
   font-family: cursive;
   font-size: 0.6rem;
@@ -129,7 +156,7 @@ footer>span:hover,header>span:hover{
   cursor: pointer;
 }
 
-header>div:hover{
+header>.user:hover{
   background-color: #9b3123;
 }
 

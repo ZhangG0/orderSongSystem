@@ -87,8 +87,9 @@ export default {
             console.log(res);
             if (res.status === 200){
               sessionStorage.setItem("user",JSON.stringify(res.data));
-              window.location.replace("/singHome")
+              // window.location.replace("/singHome")
               this.$router.push("/singHome")
+              this.$emit('score-change')
             }else {
               this.$message({
                 type:'error',

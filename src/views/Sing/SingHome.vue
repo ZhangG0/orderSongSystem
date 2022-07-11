@@ -83,6 +83,9 @@ export default {
       
     }
   },
+  created() {
+    this.$emit('score-change');
+  },
   methods:{
 	toTodaySongs(){
 		// alert("in that");

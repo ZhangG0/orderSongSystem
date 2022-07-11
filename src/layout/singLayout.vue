@@ -1,9 +1,9 @@
 <template>
 
   <div>
-    <SingHeader></SingHeader>
+    <SingHeader v-if="update" ref="signIn"></SingHeader>
     <SingBackground></SingBackground>
-    <router-view></router-view>
+    <router-view @score-change="reload"></router-view>
   </div>
 
 </template>
@@ -17,7 +17,23 @@ export default {
   components: {
     SingHeader, 
     SingBackground
+    },
+  data() {
+    return {
+      update: true
     }
+  },
+  methods: {
+    reload() {
+      // 移除组件
+      this.update = false
+      // 在组件移除后，重新渲染组件
+      // this.$nextTick可实现在DOM 状态更新后，执行传入的方法。
+      this.$nextTick(() => {
+        this.update = true
+      })
+    }
+  }
 }
 </script>
 
