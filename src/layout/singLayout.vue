@@ -3,6 +3,7 @@
   <div>
     <SingHeader v-if="update" ref="signIn"></SingHeader>
     <SingBackground></SingBackground>
+<!--    score-change自定义事件 内部组件使用this.$emit('score-change')调用-->
     <router-view @score-change="reload"></router-view>
   </div>
 
