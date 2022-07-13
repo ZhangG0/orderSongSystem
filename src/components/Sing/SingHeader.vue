@@ -11,7 +11,7 @@
     <!--    已登录：跳转Home-->
     <!--    未登录：跳转用户登录 Music is My Life-->
     <span @click="toSingHome">
-      <span v-if="titleShow" class="backRight">{{ title }}</span>
+      <span v-if="titleShow" class="title">{{ title }}</span>
       <span v-else>Music is My Life</span>
     </span>
 
@@ -104,7 +104,7 @@ footer{
   bottom: 0;
 }
 
-footer>span:hover,header>span:hover{
+footer>span:hover,header>span>span:hover{
   color: #313134;
   cursor: pointer;
   /* font-weight: bold; */
@@ -122,7 +122,7 @@ footer>span:hover,header>span:hover{
   cursor: pointer;
 }
 
-.backRight{
+.title{
   font-family: cursive;
   font-size: 0.6rem;
   font-weight: bold;
