@@ -32,6 +32,7 @@
 
 import singRequest from "@/utils/singRequest";
 import {reactive} from "vue";
+import "@/static/css/commonResponse.css"
 
 export default {
   name: "UserLogin",
@@ -132,25 +133,4 @@ export default {
   margin-top: 10vh;
 }
 
-.el-input,.el-button{
-  width: 75vw;
-  /* margin-top: 10%; */
-
-}
-
-@media screen and (min-width: 1000px){
-  .el-input,.el-button{
-    width: 50vw;
-
-
-  }
-}
-
-@media screen and (min-width: 1600px){
-  .el-input,.el-button{
-    width: 30vw;
-
-
-  }
-}
 </style>
