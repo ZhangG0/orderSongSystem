@@ -86,36 +86,39 @@ export default {
   methods:{
     login(){
       this.$refs.form.validate((valid) =>{
-        singRequest.post("singer/login",this.form,{
-          params:{
-            phone:this.form.phone,
-            password:this.form.password
-          }
-        }).then(res =>{
-          console.log(res);
-          if (res.status === 200){
-            let userData = res.data;
-            //歌手初始化（为了和用户保持一致，当后端技术库表重构后可以删除）
-            //注册时间初始化
-            let arr = userData.registerTime.split(' ');
-            userData.registerTime = arr[0];
-            //singerName => username 初始化
-            userData.username = userData.singerName;
-            //information => major 学院初始化
-            userData.major = userData.information;
+        if(valid){
+          singRequest.post("singer/login",this.form,{
+            params:{
+              phone:this.form.phone,
+              password:this.form.password
+            }
+          }).then(res =>{
+            console.log(res);
+            if (res.status === 200){
+              let userData = res.data;
+              //歌手初始化（为了和用户保持一致，当后端技术库表重构后可以删除）
+              //注册时间初始化
+              let arr = userData.registerTime.split(' ');
+              userData.registerTime = arr[0];
+              //singerName => username 初始化
+              userData.username = userData.singerName;
+              //information => major 学院初始化
+              userData.major = userData.information;
 
-            sessionStorage.setItem("user",JSON.stringify(userData));
-            console.log(JSON.stringify(userData));
-            this.$router.push("/singHome/SingerHome");
-          }else {
-            this.$message({
-              type:'error',
-              message:'登陆失败,'+res.msg,
-              center: true,
-              duration:1000
-            })
-          }
-        })
+              sessionStorage.setItem("user",JSON.stringify(userData));
+              console.log(JSON.stringify(userData));
+              this.$router.push("/singHome/SingerHome");
+            }else {
+              this.$message({
+                type:'error',
+                message:'登陆失败,'+res.msg,
+                center: true,
+                duration:1000
+              })
+            }
+          })
+        }
+
       })
     },
     toRegister(){
