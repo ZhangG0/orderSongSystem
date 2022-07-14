@@ -30,8 +30,8 @@ app.use(store).use(router)
     .use(VueWechatTitle)
     .use(ElementPlus, {locale: zhCn,size:'small'})
     .mount('#app');
-app.use(Form).use(Button).use(Icon).use(Image);
-app.use(FormItem);
-app.use(Cell);
-app.use(CellGroup);
+
+app.use(Cell).use(CellGroup).use(Icon);
+app.use(Form).use(FormItem);
+app.use(Button).use(Image);
 app.use(Checkbox).use(CheckboxGroup);
