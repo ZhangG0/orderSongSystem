@@ -85,9 +85,13 @@ export default {
               password:this.form.password
             }
           }).then(res =>{
-            console.log(res);
             if (res.status === 200){
-              sessionStorage.setItem("user",JSON.stringify(res.data));
+              let userData = res.data;
+              //注册时间初始化
+                let arr = userData.registerTime.split(' ');
+                userData.registerTime = arr[0];
+              //数据写入session
+              sessionStorage.setItem("user",JSON.stringify(userData));
               // window.location.replace("/singHome")
               this.$router.push("/singHome")
               this.$emit('score-change')
