@@ -11,8 +11,8 @@
       <span>歌手邀请码为 : {{ singerInviteCode }}<br>(注:同一时间内仅一个邀请码有效，用后即焚)</span>
       <template #footer>
         <span>
-          <el-button @click="dialogVisible = false">确定</el-button>
-          <el-button type="primary" @click="copy(this.singerInviteCode)">复制</el-button>
+          <el-button style="width: 30%" @click="dialogVisible = false">确定</el-button>
+          <el-button style="width: 30%" type="primary" @click="copy(this.singerInviteCode)">复制</el-button>
         </span>
       </template>
     </el-dialog>
@@ -33,9 +33,9 @@ export default {
     }
   },
   created() {
-    // sessionStorage.setItem("user",{"username":"666"});
     //监测是否登录
     //BUG预警 用户表单注入后可能会有BUG
+    this.$emit('score-change');
     if (!sessionStorage.user && !localStorage.user){
       this.$router.push("/singHome/ManagementSystemLogin");
       console.log("in singerName!!!!")
@@ -80,15 +80,6 @@ export default {
           duration:1500
         })
       }else {
-        // navigator.clipboard.writeText(text).then(() => {
-        //   this.$message.success({
-        //     message:'复制成功',
-        //     customClass:'message',
-        //     center: true,
-        //     duration:1000
-        //   });
-        // });
-
         if (navigator.clipboard && window.isSecureContext) {
           // navigator clipboard 向剪贴板写文本
           navigator.clipboard.writeText(text).then(() => {
