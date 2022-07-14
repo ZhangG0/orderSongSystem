@@ -11,7 +11,7 @@
     <!--    已登录：跳转Home-->
     <!--    未登录：跳转用户登录 Music is My Life-->
     <span @click="toSingHome">
-      <span v-if="titleShow" class="title">{{ title }}</span>
+      <span v-if="titleShow" class="myTitle">{{ title }}</span>
       <span v-else>Music is My Life</span>
     </span>
 
@@ -41,7 +41,7 @@ export default {
       username:"",
       userShow:true,
       titleShow:true,
-      whiteTitle:["校声乐队点歌系统","今日歌单"],
+      whiteTitle:["校声乐队点歌系统","今日歌单","歌手管理后台登录"],
       title:this.$route.meta.title,
     }
   },
@@ -71,7 +71,13 @@ export default {
 
     },
     toManagementSystem(){
-      this.$router.push('/singHome/ManagementSystemLogin');
+      if (!sessionStorage.getItem("user") || !JSON.parse(sessionStorage.getItem("user")).singerName){
+          this.$router.push('/singHome/ManagementSystemLogin');
+        }else {
+        this.$router.push('/singHome/singerHome');
+      }
+
+
     },
     back(){
       this.$router.back();
@@ -122,20 +128,19 @@ footer>span:hover,header>span>span:hover{
   cursor: pointer;
 }
 
-.title{
+.myTitle{
   font-family: cursive;
   font-size: 0.6rem;
   font-weight: bold;
   height: 2.5vh;
   color: white;
   text-align: center;
-  z-index: 10;
   padding:0 2vw;
   display: inline-block;
   width: 35vw;
-  /*position: absolute;*/
+  position: absolute;
   /*float: left;*/
-  /*left: 4vh;*/
+  left: 32.5vw;
   background-color: #bb3221;
 }
 
