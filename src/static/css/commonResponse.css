@@ -1,0 +1,45 @@
+/*ElementPlus 按钮响应式*/
+.el-input,.el-button{
+    width: 75vw;
+    /* margin-top: 10%; */
+
+}
+
+@media screen and (min-width: 1000px){
+    .el-input,.el-button{
+        width: 50vw;
+
+
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .el-input,.el-button{
+        width: 30vw;
+
+
+    }
+}
+
+/*NutUI 按钮响应式*/
+.nut-cell,.nut-button{
+    width: 90vw;
+    /* margin-top: 10%; */
+
+}
+
+@media screen and (min-width: 900px){
+    .nut-cell,.nut-button{
+        width: 60vw;
+
+
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .nut-cell,.nut-button{
+        width: 40vw;
+
+
+    }
+}
