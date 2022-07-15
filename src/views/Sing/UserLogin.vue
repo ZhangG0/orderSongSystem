@@ -88,8 +88,12 @@ export default {
             if (res.status === 200){
               let userData = res.data;
               //注册时间初始化
-                let arr = userData.registerTime.split(' ');
-                userData.registerTime = arr[0];
+              let arr = userData.registerTime.split(' ');
+              userData.registerTime = arr[0];
+              //初始化数字中间四位为 *
+              userData.phone = userData.phone.replace(userData.phone.substring(3,7),"****");
+              //role初始化 用户为0
+              userData.role = 0;
               //数据写入session
               sessionStorage.setItem("user",JSON.stringify(userData));
               // window.location.replace("/singHome")

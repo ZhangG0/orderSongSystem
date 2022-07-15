@@ -93,8 +93,8 @@ export default {
               password:this.form.password
             }
           }).then(res =>{
-            console.log(res);
             if (res.status === 200){
+              console.log(res.data);
               let userData = res.data;
               //歌手初始化（为了和用户保持一致，当后端技术库表重构后可以删除）
               //注册时间初始化
@@ -104,9 +104,12 @@ export default {
               userData.username = userData.singerName;
               //information => major 学院初始化
               userData.major = userData.information;
-
+              //role初始化 歌手为1
+              userData.role = 1;
+              //初始化数字中间四位为 *
+              userData.phone = userData.phone.replace(userData.phone.substring(3,7),"****");
               sessionStorage.setItem("user",JSON.stringify(userData));
-              console.log(JSON.stringify(userData));
+              // sessionStorage.setItem("user",{role:1});
               this.$router.push("/singHome/SingerHome");
             }else {
               this.$message({
