@@ -66,7 +66,7 @@ export default {
             trigger: 'blur'
           },
           {
-            pattern:/^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$)([^\u4e00-\u9fa5\s]){6,20}$/,
+            pattern:/^(?!\d+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$)([^\u4e00-\u9fa5\s]){6,20}$/,
             message: '请输入6-20位包含英文字母、数字或者符号中两种',
             trigger: 'blur'
           },
