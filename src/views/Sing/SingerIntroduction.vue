@@ -31,7 +31,7 @@
       </el-descriptions-item>
 
     </el-descriptions>
-    <div class="ListFont" @click="toTop">↑ 返回顶部 ↑</div>
+    <div class="ListFoot" @click="toTop">↑ 返回顶部 ↑</div>
 
 
 
@@ -111,7 +111,7 @@ export default {
   height: 20%;
 }
 
-.ListHead,.ListFont{
+.ListHead,.ListFoot{
   text-align: center;
   font-size: medium;
   color: #03033b;
@@ -120,7 +120,7 @@ export default {
   background-color: #e6e6e6;
 
 }
-.ListFont{
+.ListFoot{
   cursor: pointer;
 }
 
@@ -140,7 +140,7 @@ export default {
 
 }
 
-.toTop:hover , .ListFont:hover{
+.toTop:hover , .ListFoot:hover{
   color: #c6b58d;
   border-color: #c6b58d;
 }
