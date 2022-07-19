@@ -34,6 +34,7 @@
 <script>
 import {reactive} from "vue";
 import singRequest from "@/utils/singRequest";
+import "@/static/css/commonResponse.css"
 
 export default {
   name: "AdminAndSinger",
@@ -71,7 +72,7 @@ export default {
             trigger: 'blur'
           },
           {
-            pattern:/^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$)([^\u4e00-\u9fa5\s]){6,20}$/,
+            pattern:/^(?!\d+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$)([^\u4e00-\u9fa5\s]){6,20}$/,
             message: '请输入6-20位包含英文字母、数字或者符号中两种',
             trigger: 'blur'
           },
@@ -146,7 +147,7 @@ export default {
   flex-flow: column wrap;
   align-items: center;
   justify-content: flex-start;
-  
+
 }
 
 .Text{
@@ -164,26 +165,5 @@ export default {
   height: 25vh;
 }
 
-.el-input,.el-button{
-  width: 75vw;
-  /* margin-top: 10%; */
-  
-}
-
-@media screen and (min-width: 1000px){
-  .el-input,.el-button{
-  width: 50vw;
-  
-  
-}
-}
-
-@media screen and (min-width: 1600px){
-  .el-input,.el-button{
-  width: 30vw;
-  
-  
-}
-}
 
 </style>
