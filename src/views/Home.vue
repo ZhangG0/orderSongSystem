@@ -2,7 +2,7 @@
   <div style="width: 100%;min-height: 100vh;background-color: #313134;overflow: hidden">
     <div style="width: 320px; margin: 150px auto">
       <el-button type="primary" icon="Star" class="button" @click="toMyResume">简历</el-button>
-      <el-button type="primary" icon="House" class="button" @click="toSBYGLogin" >势必医馆</el-button>
+      <el-button type="primary" icon="House" class="button" @click="toSBYGLogin" disabled >势必医馆(项目暂停)</el-button>
       <el-button type="primary" icon="Mic" class="button" @click="toSing"  >校声乐队点歌系统</el-button>
       <!-- <el-button type="primary" icon="Calendar" class="button" @click="toMyDateTest" disabled>测试课程--日期测试</el-button> -->
     </div>
