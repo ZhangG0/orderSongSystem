@@ -128,6 +128,14 @@ const routes = [
         }
       },
       {
+        path:'/singHome/About',
+        name:'About',
+        component:() => import("@/views/Sing/About"),
+        meta:{
+          title:'关于我们'
+        }
+      },
+      {
         path:'/singHome/SingerHome',
         name:'SingerHome',
         // redirect:"/singHome/ManagementSystemLogin",
