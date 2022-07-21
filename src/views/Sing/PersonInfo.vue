@@ -13,11 +13,16 @@
     <nut-cell-group style="margin-top: 1.5vh">
       <nut-cell title="头像" center v-if="[1].includes(user.role)">
         <template v-slot:link>
-          <nut-image
-              :src="user.avatarUrl"
-              width="50"
-              height="50">
-          </nut-image>
+<!--          <nut-image-->
+<!--              :src="user.avatarUrl"-->
+<!--              width="50"-->
+<!--              height="50">-->
+<!--          </nut-image>-->
+          <nut-avatar
+              size="large"
+              :url="user.avatarUrl"
+              shape="square"
+          ></nut-avatar>
         </template>
       </nut-cell>
       <nut-cell
