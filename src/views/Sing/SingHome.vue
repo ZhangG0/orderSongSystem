@@ -61,7 +61,7 @@
 				<el-button color="#d5c397" round>留言板</el-button>
 			</div>
 			<div>
-				<el-button color="#d5c397" round>关于我们</el-button>
+				<el-button color="#d5c397" round @click="toAbout">关于我们</el-button>
 			</div>
 
 			
@@ -87,13 +87,15 @@ export default {
     this.$emit('score-change');
   },
   methods:{
-	toTodaySongs(){
-		// alert("in that");
+	  toTodaySongs(){
 		this.$router.push('/singHome/TodaySongs');
 	},
-  toSingerIntroduction(){
+    toSingerIntroduction(){
     this.$router.push('/singHome/SingerIntro');
-  }
+  },
+    toAbout(){
+      this.$router.push('/singHome/About');
+    }
   },
 
 
