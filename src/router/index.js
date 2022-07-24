@@ -108,7 +108,7 @@ const routes = [
         name:'singHome',
         component: () => import("../views/Sing/SingHome"),
         meta:{
-          title:'校声乐队点歌系统'
+          title:'i点歌---校声乐队点歌系统'
         },
       },
       {
