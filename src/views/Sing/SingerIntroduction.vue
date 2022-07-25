@@ -43,7 +43,6 @@
   将数组展示后点击，点击后获得其唯一的id或者歌手名字，进入同一页面，用歌手的各种东西进行渲染
 -->
 <script>
-
 import singRequest from "@/utils/singRequest";
 
 export default {
@@ -53,7 +52,7 @@ export default {
       tableData:[],
     }
   },
-  beforeCreate() {
+  created() {
     singRequest.get("/singer/find-all-singer").then(res =>{
       // console.log(res);
       this.tableData = res.data;
@@ -62,16 +61,6 @@ export default {
         this.tableData[i].registerTime = arr[0];
       }
     })
-  },
-  created() {
-      // singRequest.get("/singer/find-all-singer").then(res =>{
-      //   // console.log(res);
-      //   this.tableData = res.data;
-      //   for (let i = 0; i < this.tableData.length; i++) {
-      //     let arr = this.tableData[i].registerTime.split(' ');
-      //     this.tableData[i].registerTime = arr[0];
-      //   }
-      // })
   },
   methods:{
     toTop(){
