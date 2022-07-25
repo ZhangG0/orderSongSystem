@@ -10,7 +10,7 @@
         :column="4">
       <el-descriptions-item class="SingerListFirst" width="33%" align="center">
         <br>
-        <el-image :src="singer.avatarUrl" fit="contain" style="height: 10vh"></el-image>
+        <el-image :src="singer.avatarUrl" fit="contain" style="height: 10vh" lazy></el-image>
       </el-descriptions-item>
 
 
