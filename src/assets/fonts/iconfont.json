@@ -1,0 +1,23 @@
+{
+  "id": "3370015",
+  "name": "声乐队点歌系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "21334678",
+      "name": "万圣节",
+      "font_class": "nvwumao",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "20784233",
+      "name": "歌单",
+      "font_class": "gedan",
+      "unicode": "e6bf",
+      "unicode_decimal": 59071
+    }
+  ]
+}
