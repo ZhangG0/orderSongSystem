@@ -10,7 +10,17 @@
         :column="4">
       <el-descriptions-item class="SingerListFirst" width="33%" align="center">
         <br>
-        <el-image :src="singer.avatarUrl" fit="contain" style="height: 10vh" lazy></el-image>
+        <el-image v-if="singer.avatarUrl" :src="singer.avatarUrl" fit="contain" style="width: 75%;height: 75%" lazy></el-image>
+        <nut-avatar
+            v-else
+            style="width: 75%;height: 75%"
+            size="large"
+            fit="contain"
+            shape="square"
+            color="rgb(245, 106, 0)"
+            bg-color="rgb(253, 227, 207)"
+            alt="暂无图片"
+        >{{singer.singerName.substr(0,3)}}</nut-avatar>
       </el-descriptions-item>
 
 

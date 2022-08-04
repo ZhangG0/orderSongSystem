@@ -22,7 +22,10 @@
               size="large"
               :url="user.avatarUrl"
               shape="square"
-          ></nut-avatar>
+              color="rgb(245, 106, 0)"
+              bg-color="rgb(253, 227, 207)"
+              alt="暂无图片"
+          >{{user.username}}</nut-avatar>
         </template>
       </nut-cell>
       <nut-cell
