@@ -8,14 +8,15 @@
 .background_div{
     background-color: transparent;
     color: white;
-    padding-top: 2.25vh;
+    padding: 2.6vh 0 3vh 0;
 
 }
 
 .flexCenter{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     align-items: center;
     justify-content: flex-start;
 }
+
 /*点歌系统 END*/
