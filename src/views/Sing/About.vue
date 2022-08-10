@@ -1,11 +1,5 @@
 <template>
-<!--
 
-  BUG反馈
-  我要赞助
-  关于产品
-  开发者的话
--->
   <div class="background_div flexCenter">
     <nut-image
     src="https://cdn.img.jzilong.com/%E9%9F%B3%E4%B9%90%E8%83%B6%E5%8D%B7%E6%9C%BA.png"/>
@@ -46,12 +40,13 @@ export default {
 <style scoped>
 .background_div{
   color: black;
-  height: 100vh;
+  min-height:100vh;
+  width: 100vw;
   background-color: #f8f8f8;
 }
 
 .nut-image{
-  margin: 2vh 0 6vh 0;
+  margin: 1vh 0 6vh 0;
   -webkit-box-reflect: below -62px -webkit-linear-gradient(bottom, rgba(255,255,255,0.2) 0%, transparent 35%, transparent 100%);
   /*-webkit-box-reflect: below 10px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.2)),);*/
 }
@@ -59,7 +54,8 @@ export default {
 .developer{
   font-size: small;
   color: #8c939d;
-  /*position: absolute;*/
-  margin-top: 15vh;
+  position: relative;
+  text-align: center;
+  margin: 10px 0;
 }
 </style>
