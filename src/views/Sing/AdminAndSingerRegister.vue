@@ -147,7 +147,6 @@ export default {
             if (valid){
               //请求后台数据
               singRequest.post("singer/register",this.form).then(res =>{
-                console.log(res);
                 if (res.status === 200){
                   this.$message({
                     type:"success",
