@@ -12,7 +12,7 @@ const routes = [
     name: 'Home',
     component: () => import("../views/Home")
   },
-  
+
   {
     path: '/user',
     name: 'Layout',
@@ -51,7 +51,7 @@ const routes = [
       title:'势必医馆登录'
     },
   },
-  
+
   {
     path: '/register',
     name: 'Register',
@@ -60,7 +60,7 @@ const routes = [
       title:'势必医馆注册'
     },
   },
-  
+
   {
     path: '/myResume',
     name: 'MyResume',
@@ -69,7 +69,7 @@ const routes = [
       title:'个人简历'
     },
   },
-  
+
   {
     path: '/myDateTest',
     name: 'MyDateTest',
@@ -87,7 +87,7 @@ const routes = [
       title:'test'
     },
   },
-  
+
 
 
 // 声乐队点歌系统
@@ -120,6 +120,14 @@ const routes = [
         }
       },
       {
+        path:'/singHome/SongCatalogue',
+        name:'SongCatalogue',
+        component:() => import("@/views/Sing/SongCatalogue"),
+        meta:{
+          title:'曲库大全'
+        }
+      },
+      {
         path:'/singHome/SingerIntro',
         name:'SingerIntroduction',
         component:() => import("@/views/Sing/SingerIntroduction"),
@@ -138,7 +146,6 @@ const routes = [
       {
         path:'/singHome/SingerHome',
         name:'SingerHome',
-        // redirect:"/singHome/ManagementSystemLogin",
         component:() => import("@/views/Sing/SingerHome"),
         meta:{
           title:'歌手之家'
