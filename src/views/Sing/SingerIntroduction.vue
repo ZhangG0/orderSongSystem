@@ -66,6 +66,7 @@ export default {
     singRequest.get("/singer/find-all-singer").then(res =>{
       // console.log(res);
       this.tableData = res.data;
+      //格式化时间(yyyy-mm-dd)
       for (let i = 0; i < this.tableData.length; i++) {
         let arr = this.tableData[i].registerTime.split(' ');
         this.tableData[i].registerTime = arr[0];

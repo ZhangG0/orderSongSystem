@@ -1,66 +1,129 @@
 <template>
+<!--  页面设计
+      居中显示
+      头像
+      姓名
+      粉丝 热度
+      学院
+      可唱曲目
+      我的歌单
+      我要演唱
+      -->
   <div class="background_div">
-    <el-button type="primary" size="large" round style="margin-top: 30vh" @click="getSingerInviteCode">获取邀请码</el-button>
-    <el-dialog
-        v-model="dialogVisible"
-        title="歌手邀请码"
-        width="80vw"
-        center
-        top="30vh"
-    >
-      <span>歌手邀请码为 : {{ singerInviteCode }}<br>(注:同一时间内仅一个邀请码有效，用后即焚)</span>
-      <template #footer>
-        <span>
-          <el-button style="width: 30%" @click="dialogVisible = false">确定</el-button>
-          <el-button style="width: 30%" type="primary" @click="copy(this.singerInviteCode)">复制</el-button>
-        </span>
-      </template>
-    </el-dialog>
+    <nut-button @click="this.dialogVisible.addNewSong = !this.dialogVisible.addNewSong;">
+      新增歌曲
+      <nut-dialog
+          title="新增歌曲"
+          v-model:visible="dialogVisible.addNewSong"
+          custom-class="inputDialog"
+      >
+
+        <!--      content部分-->
+        <el-form :model="addNewSong" :rules="rules" ref="rulesForm">
+          <el-form-item prop="songName">
+            <span class="dialogELInputLabel">歌名</span>
+            <el-input class="dialogELInput" placeholder="请输入歌名" v-model="addNewSong.songName" clearable></el-input>
+          </el-form-item>
+          <el-form-item s prop="ogSinger">
+            <span class="dialogELInputLabel">歌手名</span>
+            <el-input class="dialogELInput" placeholder="请输入歌手名" v-model="addNewSong.ogSinger" clearable></el-input>
+          </el-form-item>
+        </el-form>
+
+        <!--      foot部分-->
+        <template #footer>
+          <el-button round style="width: 42%;padding: 5px"  @click="dialogVisible.addNewSong = !dialogVisible.addNewSong">取消</el-button>
+          <el-button round style="width: 42%;padding: 5px;color: white" color="#d5432f"   @click="addNewSongFun(this.addNewSong)">新增</el-button>
+        </template>
+
+        <template ></template>
+
+      </nut-dialog>
+    </nut-button>
+
+    <nut-button>
+      预约演唱
+    </nut-button>
+    <nut-button @click="getSingerInviteCode">
+      获取邀请码
+      <nut-dialog
+          v-model:visible="dialogVisible.getInviteCode"
+          title="歌手邀请码"
+          text-align="left"
+      >
+
+        <div style="margin-bottom: 5px" >歌手邀请码为 : <strong>{{ singerInviteCode }}</strong></div>
+        <span>(注:同一时间内仅一个邀请码有效，用后即焚)</span>
+
+        <template #footer>
+          <el-button round style="width: 42%;padding: 5px"  @click="dialogVisible.getInviteCode = false">取消</el-button>
+          <el-button round style="width: 42%;padding: 5px;color: white" color="#d5432f"   @click="copy(this.singerInviteCode)">复制</el-button>
+        </template>
+      </nut-dialog>
+    </nut-button>
+
   </div>
 
 </template>
 
 <script>
 import singRequest from "@/utils/singRequest";
+import { reactive} from "vue";
 
 export default {
   name: "AdminAndSinger",
   data(){
     return{
       singerInviteCode:'',
-      dialogVisible:false,
-
+      dialogVisible:{
+        getInviteCode:false,
+        addNewSong:false
+      },
+      addNewSong:{
+        songName:"",
+        ogSinger:"",
+        singer:JSON.parse(sessionStorage.getItem("user")).singerName
+      },
+      rules:reactive({
+        ogSinger:[
+          {
+            required:true,
+            message:'请输入歌手',
+            trigger:'blur'
+          }
+        ],
+        songName:[
+          {
+            required:true,
+            message:'请输入歌名',
+            trigger:'blur'
+          }
+        ]
+      })
     }
   },
   created() {
     //监测是否登录
-    //BUG预警 用户表单注入后可能会有BUG
     this.$emit('score-change');
     if (!sessionStorage.user && !localStorage.user){
       this.$router.push("/singHome/ManagementSystemLogin");
-      console.log("in singerName!!!!")
     }else if (!(JSON.parse(sessionStorage.getItem("user")).singerName)
            && !JSON.parse(localStorage.getItem("user")).singerName){
-      this.$router.push("/singHome/ManagementSystemLogin");
-      console.log("in singerName")
+      //判断了user里是否有singerName键 若没有则为用户
+      this.$router.push("/singHome");
     }
 
   },
   methods:{
     getSingerInviteCode: function () {
-      this.dialogVisible = true;
-
       singRequest.get('/admin_find').then(res => {
-        // console.log(res);
         if (res.status === 200) {
-          // console.log(res.data.data.inviteMyCode);
           this.singerInviteCode = res.data.inviteMyCode;
           this.$message({
             type: "success",
             center: true,
             message: "获取邀请码成功 ! ",
             duration:1000
-
           })
         } else {
           this.$message({
@@ -68,6 +131,33 @@ export default {
             message: "获取邀请码失败,请联系开发人员。",
             center: true,
             duration:1000
+          })
+        }
+      })
+      this.dialogVisible.getInviteCode = !this.dialogVisible.getInviteCode;
+    },
+
+    addNewSongFun(){
+      this.$refs.rulesForm.validate((valid) => {
+        if (valid){
+          singRequest.post("songCatalogue/addSong",this.addNewSong).then( res => {
+            console.log(res);
+            console.log(this.addNewSong);
+            if (res.status === 200){
+              this.$message({
+                type:'success',
+                message:'新增成功',
+                center:true,
+                duration:1000
+              })
+            }else {
+              this.$message({
+                type:'error',
+                message:'新增失败'+res.msg,
+                center:true,
+                duration:1000
+              })
+            }
           })
         }
       })
@@ -122,9 +212,18 @@ export default {
 .background_div{
   text-align: center;
 }
+.dialogELInput{
+  display: inline-block;
+  max-width: 75%;
+}
+.dialogELInputLabel{
+  min-width: 20%;
+  text-align: center;
+}
 
 </style>
-
 <style>
-
+.inputDialog>.nut-dialog__content{
+  margin: 20px 0 5px 0 ;
+}
 </style>

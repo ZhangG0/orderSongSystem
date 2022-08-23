@@ -3,8 +3,8 @@ import router from "@/router";
 
 
 const singRequest = axios.create({
-    baseURL:'https://www.jzilong.com:8383/',
-    // baseURL:'http://150.158.58.129:8383',
+    baseURL:'https://www.jzilong.com:9999/',
+    // baseURL:'http://150.158.58.129:9999',
     timeout:5000
 })
 

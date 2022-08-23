@@ -171,11 +171,8 @@
       }
     },
     created() {
-      const today = () =>{
-        const time = new Date();
-        this.runningTime = time.getFullYear() + "-" + time.getMonth() + "-" + time.getDay();
-      }
-      setTimeout(today,1);
+        let time = new Date();
+        this.runningTime = time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate();
     },
     methods:{
 
