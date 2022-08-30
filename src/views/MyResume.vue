@@ -1,6 +1,11 @@
 <template>
   <body>
-
+  <header>
+    <el-card class="header">
+      上次更新时间<br/>
+      2022-8-30
+    </el-card>
+  </header>
   <div id="parentDiv" class="resumeDiv opacity">
     <div class="infoDiv">
       <!--        基础信息-->
@@ -11,10 +16,9 @@
           <table>
             <tr>
               <td>电话:15701959668</td>
-              <td>邮箱:1073266994@qq.com</td>
+              <td>邮箱:zhanggzero@qq.com</td>
             </tr>
             <tr>
-              <td>生日:1999.07.02</td>
               <td>现居城市:成都 宁波</td>
             </tr>
           </table>
@@ -26,9 +30,9 @@
         <div class="blueLine"></div>
         <div class="detailInfoDiv">
           <div> 熟悉 HTML CSS JavaScript </div>
-          <div> 熟悉 JQuery PHP Vue ElementPlus Mysql Java 基础</div>
-          <div> 掌握基本数据结构和算法</div>
-          <div> 搭建使用过Apache Tomcat Nginx服务器</div>
+          <div> 熟悉Vue ElementPlus NutUI Echart JQuery</div>
+          <div> 了解Nginx Java SpringBoot mybatis</div>
+          <div> 能够使用git进行团队协作并且掌握基本数据结构和算法</div>
         </div>
       </div>
       <!--        教育经历-->
@@ -41,7 +45,7 @@
             <span class="time">2019.9-至今</span>
           </div>
 
-          <div>主修课程:JavaScript语言程序设计(99.4分),Web服务器端程序设计(99.4分),Android程序设计,HTML5程序设计,计算机组成原理,数据库及应用,数据结构等。
+          <div>主修课程:HTML5程序设计(100分),JavaScript语言程序设计(99.4分),Web服务器端程序设计(99.4分),Android程序设计,计算机组成原理,数据库及应用,数据结构等。
           </div>
         </div>
       </div>
@@ -50,6 +54,29 @@
         <div class="headDiv">项目经历</div>
         <div class="blueLine"></div>
         <div class="detailInfoDiv">
+
+          <div class="detailInfoDivFirst">
+            ￭<a class="mytamll" >前端监控系统</a>
+            <span class="time">2022.7-2022.8</span>
+          </div>
+          <div>
+            所用技术:Vue2 Elementui Echarts Axios SpringBoot 等<br/>
+            项目描述：监控前端项目的JS、接口、白屏、资源、http等异常以及拿到性能数据和pv、uv等用户行为数据，来为前端提供一个稳定运行的环境，并以决策者展示图表大屏的方式来展示能够及时发现前端错误以及增强对用的了解来改进产品的监控系统。<br/>
+            个人职责：<br/>
+            负责整体项目设计、功能构想。<br/>
+            负责项目人员及计划统筹，项目整体推进。<br/>
+            负责JS异常以及白屏异常的埋点收集以及展示的代码开发。<br/>
+            进行数据清洗代码优化并负责部分JAVA后端代码开发。
+          </div>
+
+          <div class="detailInfoDivFirst">
+            ￭<a class="mytamll" @click="this.$router.push('/singHome')" >i点歌---校声乐队点歌系统</a>
+            <span class="time">2022.6-至今</span>
+          </div>
+          <div>
+            所用技术:Vue3 ElementPlus NutUI Axios SpringBoot mybatis 等<br/>
+            项目描述：该项目均由个人完成。用前后端分离技术搭建了运载着校声乐队驻场点歌所需的基本功能，主要应用场景为移动端，但是依旧适配于PC端的使用，有着登录注册，今日歌单、歌手、曲库大全等展示，用户分权，随用随销的邀请码保证安全，并且还有歌手后台，能够使歌手以及管理员做的管理操作，并且部署nginx服务器，上线使用并持续更新维护。
+          </div>
 
           <div class="detailInfoDivFirst">
             ￭<a class="mytamll"  @click="this.$router.push('/login')">势必医馆社团系统（全栈）</a>
@@ -67,11 +94,23 @@
           <div>项目描述:该项目构建了现代网上购物网站的前端搭建，具体如下：</div>
           <div >  利用HTML与CSS完成了网站的页面设计和多种不同形式的布局实现，<br>   利用原生JS和JQuery实现了轮播、金额排序搜索、格式化金额等购物网站所需要的前端交互功能
           </div>
-
-
-
         </div>
       </div>
+
+      <!--        实习经历-->
+      <div class="otherInfoDiv practicalAndOrganizationalExp">
+        <div class="headDiv">实习经历</div>
+        <div class="blueLine"></div>
+        <div class="detailInfoDiv">
+          <!--  校园音探-->
+          <div class="detailInfoDivFirst">
+            用友集团   开发实习生
+            <span class="time">2022.06-至今</span>
+          </div>
+          职责：负责客户化开发，在标准产品的基础上按照客户的需求进行定制化开发，负责全栈开发。
+        </div>
+      </div>
+
       <!--        其他技能及荣誉-->
       <div class="otherInfoDiv otherSkillAndHonor">
         <div class="headDiv">证书及荣誉</div>
@@ -101,14 +140,15 @@
         <div class="headDiv">自我评价</div>
         <div class="blueLine"></div>
         <div class="detailInfoDiv">
-          <div>￭<span>对前端工作充满热情，享受其代码构建并在页面上呈现的过程，对新功能实现敢于提出自己的思考和解决方案和见解</span></div>
-          <div>￭<span>有较强的适应能力和抗压能力，可以快速适应加班出差等工作</span></div>
-          <div>￭<span>有不错的人际交往能力和交流表达能力，能够快速了解业务需求及快速融入团队</span></div>
+          <div>￭<span>我认为不是我选择了前端而是前端选择了我</span></div>
+          <div>￭<span>我一直觉得前端是个很浪漫的职业，它处于人与计算机的十字路口，左边是产品与设计，有助于培养人文思想。右边是逻辑与代码，有助于培养理性思想。纯粹的人文思想很难将想法转化为现实，纯粹的技术又很难把握人的情感与真实需求。而前端可以感知人的需求，又有一定的能力可以将这种需求转化为产品。</span></div>
+<!--          <div>￭<span>对前端工作充满热情，享受其代码构建并在页面上呈现的过程，对新功能实现敢于提出自己的思考和解决方案和见解</span></div>-->
+<!--          <div>￭<span>有较强的适应能力和抗压能力，可以快速适应加班出差等工作</span></div>-->
+<!--          <div>￭<span>有不错的人际交往能力和交流表达能力，能够快速了解业务需求及快速融入团队</span></div>-->
 
         </div>
       </div>
 
-      <!--        实践及组织经历-->
       <div class="otherInfoDiv practicalAndOrganizationalExp">
         <div class="headDiv">实践及组织经历</div>
         <div class="blueLine"></div>
@@ -180,7 +220,7 @@ export default {
   created(){
 	   alert('温馨提示:移动端查看本页面互动功能可能有兼容性问题请谨慎点击。');
   }
-  
+
 }
 </script>
 

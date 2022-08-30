@@ -3,6 +3,10 @@ body{
     background-color: #e6e6e6;
     line-height: 23px;
 }
+header{
+    width: 100vw;
+    text-align: center;
+}
 a{
     text-decoration: none;
     color: #000001;
@@ -47,7 +51,7 @@ div.basicsInfo div.personalInfo{
 div.name{
     font-weight: 700;
     font-size: 22px;
-    padding: 5px 0px 10px 0px;
+    padding: 5px 0 10px 0;
 }
 
 div.personalInfo td{
@@ -99,7 +103,7 @@ div.imgShowBlock{
     z-index: 15;
     top: 23%;
     left: 25%;
-	
+
 /* 	position: fixed;
 	z-index: 15;
 	text-align: center;
@@ -128,7 +132,7 @@ span.close{
     font-weight: bold;
     color: grey;
     border: 2px solid grey;
-    padding: 0px 3px;
+    padding: 0 3px;
 
 }
 span.close:hover{
