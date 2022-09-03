@@ -1,3 +1,17 @@
+
+/*展示列表响应式*/
+@media screen and (min-width: 1000px) {
+    .SingerListDiv{
+        width: 70vw;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .SingerListDiv{
+        width: 50vw;
+    }
+}
+
 /*ElementPlus 按钮响应式*/
 .el-input,.el-button{
     width: 75vw;

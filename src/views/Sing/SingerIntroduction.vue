@@ -145,15 +145,4 @@ export default {
   border-color: #c6b58d;
 }
 
-@media screen and (min-width: 1000px) {
-  .SingerListDiv{
-    width: 70vw;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .SingerListDiv{
-    width: 50vw;
-  }
-}
 </style>
