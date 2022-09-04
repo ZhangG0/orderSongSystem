@@ -1,14 +1,24 @@
 
 /*展示列表响应式*/
+.SingerListDiv{
+    width: 85vw;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+}
+
 @media screen and (min-width: 1000px) {
     .SingerListDiv{
         width: 70vw;
+        margin-top: 3vh;
+        margin-bottom: 5vh;
     }
 }
 
 @media screen and (min-width: 1600px) {
     .SingerListDiv{
         width: 50vw;
+        margin-top: 3vh;
+        margin-bottom: 5vh;
     }
 }
 

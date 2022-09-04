@@ -1,7 +1,7 @@
 <template>
 <div class="background_div flexCenter">
 
-  <div class="SingerListDiv" >
+  <div class="SingerListDiv SingerListDiv1" >
     <span class="toTop" @click="toTop">⇪</span>
     <div class="ListHead">歌手列表</div>
     <el-descriptions
@@ -95,9 +95,7 @@ export default {
 
 <style scoped>
 
-.SingerListDiv{
-  font-size: 1vw;
-  width: 85vw;
+.SingerListDiv1{
   margin-top: 3vh;
   margin-bottom: 5vh;
 }
