@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11391498",
+      "name": "歌单",
+      "font_class": "gedan1",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "4933268",
+      "name": "麦克风",
+      "font_class": "maikefeng",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    },
+    {
       "icon_id": "21334678",
       "name": "万圣节",
       "font_class": "nvwumao",

@@ -16,7 +16,7 @@ import '@/static/css/global.css'
 import VueWechatTitle from 'vue-wechat-title'
 // 导入所有的el-icon图标
 import * as ElIconModules from '@element-plus/icons-vue'
-
+//引入iconfont图标
 import '@/assets/fonts/iconfont.css'
 
 
