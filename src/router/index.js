@@ -12,7 +12,6 @@ const routes = [
     name: 'Home',
     component: () => import("../views/Home")
   },
-
   {
     path: '/user',
     name: 'Layout',
@@ -51,7 +50,6 @@ const routes = [
       title:'势必医馆登录'
     },
   },
-
   {
     path: '/register',
     name: 'Register',
@@ -117,6 +115,14 @@ const routes = [
         component:() => import("@/views/Sing/TodaySongs"),
         meta:{
           title:'今日歌单'
+        }
+      },
+      {
+        path:'/singHome/OrderSong',
+        name:'orderSong',
+        component:() => import("@/views/Sing/orderSong"),
+        meta:{
+          title:'我要点歌'
         }
       },
       {

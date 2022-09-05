@@ -43,7 +43,7 @@
 
 
 			<div>
-				<el-button icon="Mic" color="#fe5339" round>我要点歌</el-button>
+				<el-button icon="Mic" color="#fe5339" round @click="this.$router.push('/singHome/OrderSong')">我要点歌</el-button>
 			</div>
 			<div>
 				<el-button color="#ff7416" round>本周歌手</el-button>
