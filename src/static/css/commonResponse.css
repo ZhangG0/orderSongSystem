@@ -6,7 +6,7 @@
     margin-bottom: 5vh;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 780px) {
     .SingerListDiv{
         width: 70vw;
         margin-top: 3vh;
@@ -14,9 +14,9 @@
     }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1150px) {
     .SingerListDiv{
-        width: 50vw;
+        width: 40vw;
         margin-top: 3vh;
         margin-bottom: 5vh;
     }
