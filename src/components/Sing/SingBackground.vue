@@ -55,7 +55,7 @@ export default {
   right: 0;
   margin: 0 auto;
   background-color: #313134;
-  height: 100vh;
+  height: 110vh;
   /* overflow: scroll; */
   /* height: 100vh; */
 }

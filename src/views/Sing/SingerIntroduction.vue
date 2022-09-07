@@ -98,6 +98,7 @@ export default {
 .SingerListDiv1{
   margin-top: 3vh;
   margin-bottom: 5vh;
+  max-width: 90vw;
 }
 
 .SingerList{
