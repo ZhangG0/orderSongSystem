@@ -23,22 +23,22 @@
 }
 
 /*ElementPlus 按钮响应式*/
-.el-input,.el-button{
+.el-input,.el-button,.el-dialog{
     width: 75vw;
     /* margin-top: 10%; */
 
 }
 
-@media screen and (min-width: 900px){
-    .el-input,.el-button{
+@media screen and (min-width: 780px){
+    .el-input,.el-button,.el-dialog{
         width: 50vw;
 
 
     }
 }
 
-@media screen and (min-width: 1600px){
-    .el-input,.el-button{
+@media screen and (min-width: 1400px){
+    .el-input,.el-button,.el-dialog{
         width: 30vw;
 
 
