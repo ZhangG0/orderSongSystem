@@ -146,7 +146,7 @@ const routes = [
         name:'About',
         component:() => import("@/views/Sing/About"),
         meta:{
-          title:'关于我们'
+          title:'关于我们',
         }
       },
       {
@@ -154,7 +154,8 @@ const routes = [
         name:'SingerHome',
         component:() => import("@/views/Sing/SingerHome"),
         meta:{
-          title:'歌手之家'
+          title:'歌手之家',
+          Authentication:true
         }
       },
       {
@@ -162,7 +163,7 @@ const routes = [
         name:'ManagementSystemLogin',
         component:() => import("@/views/Sing/AdminAndSingerLogin"),
         meta:{
-          title:'歌手管理后台登录'
+          title:'歌手管理后台登录',
         }
       },
       {
@@ -194,7 +195,7 @@ const routes = [
         name:'PersonInfo',
         component:() => import("@/views/Sing/PersonInfo"),
         meta:{
-          title:'个人信息'
+          title:'个人信息',
         }
       },
 
@@ -213,6 +214,20 @@ const router = createRouter({
   // history: createWebHashHistory(process.env.BASE_URL),
   routes,
 
+})
+
+router.beforeEach((to, from, next) => {
+  //路由守卫，访问权限配置
+  if (to.meta.Authentication){
+    if (localStorage.getItem("token") && sessionStorage.getItem("user")){
+      next()
+    }else {
+      alert("无访问权限");
+      next('/singHome')
+    }
+  }else {
+    next()
+  }
 })
 
 export default router

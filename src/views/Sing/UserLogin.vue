@@ -96,6 +96,7 @@ export default {
               userData.role = 0;
               //数据写入session
               sessionStorage.setItem("user",JSON.stringify(userData));
+              localStorage.setItem("token",userData.password);
               // window.location.replace("/singHome")
               this.$router.push("/singHome")
               this.$emit('score-change')

@@ -1,15 +1,15 @@
 <template>
 <div class="background_div">
-  
+
         <div :class="classObj">
           <div>
-            <div class="Text">欢迎 <span style="font-weight:bolder;font-size:larger">歌手后台</span> 登录<br><small>Singers Home</small> 
+            <div class="Text">欢迎 <span style="font-weight:bolder;font-size:larger">歌手后台</span> 登录<br><small>Singers Home</small>
             </div>
              <el-image class="img" :src="require('../../assets/img/board.png')" alt="告示木板" fit="contain" />
-             
+
           </div>
           <el-form size="default" :model="form" :rules="rules" ref="form">
-            
+
             <el-form-item  prop="phone">
               <el-input placeholder="请输入手机号" prefix-icon="UserFilled" v-model="form.phone" clearable/>
             </el-form-item>
@@ -110,6 +110,8 @@ export default {
               //初始化数字中间四位为 *
               userData.phone = userData.phone.replace(userData.phone.substring(3,7),"****");
               sessionStorage.setItem("user",JSON.stringify(userData));
+              //password实为token
+              localStorage.setItem("token",userData.password);
               // sessionStorage.setItem("user",{role:1});
               this.$router.push("/singHome/SingerHome");
             }else {

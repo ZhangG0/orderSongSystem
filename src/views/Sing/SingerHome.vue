@@ -128,7 +128,7 @@ export default {
         } else {
           this.$message({
             type: "error",
-            message: "获取邀请码失败,请联系开发人员。",
+            message: "服务器异常或无权限，请重新登陆。",
             center: true,
             duration:1000
           })

@@ -63,7 +63,7 @@ export default {
     }
   },
   created() {
-    singRequest.get("/singer/find-all-singer").then(res =>{
+    singRequest.get("singer/find-all-singer").then(res =>{
       // console.log(res);
       this.tableData = res.data;
       //格式化时间(yyyy-mm-dd)
