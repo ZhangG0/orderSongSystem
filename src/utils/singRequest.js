@@ -12,7 +12,7 @@ const singRequest = axios.create({
 singRequest.interceptors.request.use(config => {
     config.headers['Content-Type'] = 'application/json;charset=utf-8';
     // 在浏览器的 Session Storage 中拿到 token 值
-    config.headers.Authorization =window.localStorage.getItem("token");
+    config.headers.Authorization = window.localStorage.getItem("token");
     return config;
 })
 
