@@ -7,18 +7,21 @@
         <span style="font-size: large">《{{item.songName}}》<br/></span>
         <span>&nbsp;&nbsp;&nbsp;{{item.ogSinger}}</span>
       </div>
+
       <div class="rightItem">
+      <slot name="right">
         <span>
           <span class="text" @click="this.$router.push('/singHome/OrderSong')">我要点歌</span>
           <span class="iconfont text" @click="this.$router.push('/singHome/OrderSong')" >&#xe70d;</span>
         </span>
-        <br>
-        <span v-if="item.singer">
+          <br>
+          <span v-if="item.singer">
           <span class="text" @click="showDialog(index)">驻唱歌手一览</span>
           <span class="iconfont text">&#xe636;</span>
         </span>
-
+      </slot>
       </div>
+
 
     </div>
 
