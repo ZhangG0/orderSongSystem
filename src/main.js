@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+//引入pinia
+import {createPinia} from "pinia";
 //引入ElementPlus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -23,16 +24,18 @@ import '@/assets/fonts/iconfont.css'
 
 
 const app = createApp(App)
+const pinia = createPinia()
 //  统一注册el-icon图标
 for(let iconName in ElIconModules){
     app.component(iconName,ElIconModules[iconName]);
 }
 
-app.use(store).use(router)
+app.use(router).use(pinia)
     .use(VueWechatTitle)
     .use(ElementPlus, {locale: zhCn,size:'small'})
     .mount('#app');
 
+//  按需引入nutUI
 app.use(Cell).use(CellGroup).use(Icon).use(Table).use(BackTop).use(Avatar).use(Dialog).use(Popup).use(OverLay);
 app.use(Form).use(FormItem).use(Input).use(Toast);
 app.use(Button).use(Image);
