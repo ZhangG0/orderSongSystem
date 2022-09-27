@@ -218,11 +218,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   //路由守卫，访问权限配置
-  if (to.meta.Authentication){
+  if (to.meta.Authentication){ //若进入的是受保护的网页则验明身份
     if (localStorage.getItem("token") && sessionStorage.getItem("user")){
       next()
     }else {
-      alert("无访问权限");
+      alert("无访问权限,请登录");
       next('/singHome')
     }
   }else {
