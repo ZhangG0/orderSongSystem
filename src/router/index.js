@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Layout from '../layout/layout.vue'
 import singLayout from '../layout/singLayout.vue'
+import singNoBgLayout from "@/layout/singNoBgLayout.vue";
 
 const routes = [
   {
@@ -88,8 +89,7 @@ const routes = [
 
 
 
-// 声乐队点歌系统
-
+// 声乐队点歌系统(有Icon背景)
 
   {
     path: '/singHome',
@@ -142,21 +142,13 @@ const routes = [
         }
       },
       {
-        path:'/singHome/About',
-        name:'About',
-        component:() => import("@/views/Sing/About"),
-        meta:{
-          title:'关于我们',
-        }
-      },
-      {
         path:'/singHome/SingerHome',
         name:'SingerHome',
         component:() => import("@/views/Sing/SingerHome"),
         meta:{
           title:'歌手之家',
           Authentication:true
-        }
+        },
       },
       {
         path:'/singHome/ManagementSystemLogin',
@@ -203,8 +195,34 @@ const routes = [
     ]
   },
 
+// 声乐队点歌系统(无Icon背景)
 
+  {
+    name:'singNoBgLayout',
+    component:singNoBgLayout,
+    children: [
+      {
+        path:'/singHome/About',
+        name:'About',
+        component:() => import("@/views/Sing/About"),
+        meta:{
+          title:'关于我们',
+        }
+      },
+      {
+        path:'/singHome/SingerHome/orderToSing',
+        name:'orderToSing',
+        component:() => import("@/views/Sing/childrenPage/SingerOrderSongs.vue"),
+        meta:{
+          title:'预约演唱',
+          Authentication:true
+        },
+      },
+    ]
+  }
 ]
+
+const route = []
 
 const router = createRouter({
   // history模式
@@ -212,7 +230,7 @@ const router = createRouter({
 
   // // Hash模式 开发暂用
   // history: createWebHashHistory(process.env.BASE_URL),
-  routes,
+  routes,route
 
 })
 
