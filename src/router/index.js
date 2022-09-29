@@ -198,8 +198,10 @@ const routes = [
 // 声乐队点歌系统(无Icon背景)
 
   {
+    path: '/singHome2',
     name:'singNoBgLayout',
     component:singNoBgLayout,
+    redirect:'/singHome',
     children: [
       {
         path:'/singHome/About',
