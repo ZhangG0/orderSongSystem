@@ -1,6 +1,6 @@
 <template>
 
-  <div class="background_div flexCenter">
+  <div class="background_div_color flexCenter">
     <nut-image
     src="https://cdn.img.jzilong.com/%E9%9F%B3%E4%B9%90%E8%83%B6%E5%8D%B7%E6%9C%BA.png"/>
 
@@ -38,12 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.background_div{
-  color: black;
-  min-height:100vh;
-  width: 100vw;
-  background-color: #f8f8f8;
-}
 
 .nut-image{
   margin: 1vh 0 6vh 0;
