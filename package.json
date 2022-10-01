@@ -11,6 +11,7 @@
     "@nutui/nutui": "^3.1.22",
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
+    "dayjs": "^1.11.5",
     "element-plus": "^2.1.4",
     "node-sass": "^7.0.1",
     "pinia": "^2.0.22",

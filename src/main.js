@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+//引入dayjs
+import dayjs from 'dayjs'
 //引入pinia
 import {createPinia} from "pinia";
 //引入ElementPlus
@@ -29,6 +31,8 @@ const pinia = createPinia()
 for(let iconName in ElIconModules){
     app.component(iconName,ElIconModules[iconName]);
 }
+//全局引用dayjs
+app.config.globalProperties.$dayjs = dayjs;
 
 app.use(router).use(pinia)
     .use(VueWechatTitle)
