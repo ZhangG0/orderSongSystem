@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import '@/static/css/commonResponse.css';
+import '@/static/css/commonResponse.scss';
 import SingList from "@/components/Sing/SingList";
 import singRequest from "@/utils/singRequest";
 

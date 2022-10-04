@@ -34,7 +34,7 @@
 <script>
 import {reactive} from "vue";
 import singRequest from "@/utils/singRequest";
-import "@/static/css/commonResponse.css"
+import "@/static/css/commonResponse.scss"
 
 export default {
   name: "AdminAndSinger",

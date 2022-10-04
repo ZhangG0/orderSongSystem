@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import "@/static/css/commonResponse.css"
+import "@/static/css/commonResponse.scss"
 export default {
   name: "SingList",
   props:{
