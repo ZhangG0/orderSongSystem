@@ -224,7 +224,7 @@ const routes = [
   }
 ]
 
-const route = []
+
 
 const router = createRouter({
   // history模式
@@ -232,7 +232,7 @@ const router = createRouter({
 
   // // Hash模式 开发暂用
   // history: createWebHashHistory(process.env.BASE_URL),
-  routes,route
+  routes
 
 })
 
