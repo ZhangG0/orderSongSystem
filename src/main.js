@@ -3,8 +3,9 @@ import App from './App.vue'
 import router from './router'
 //引入dayjs
 import dayjs from 'dayjs'
-//引入pinia
+//引入pinia 以及持久化
 import {createPinia} from "pinia";
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 //引入ElementPlus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -25,8 +26,9 @@ import '@/assets/fonts/iconfont.css'
 
 
 
-const app = createApp(App)
-const pinia = createPinia()
+const app = createApp(App);
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
 //  统一注册el-icon图标
 for(let iconName in ElIconModules){
     app.component(iconName,ElIconModules[iconName]);
