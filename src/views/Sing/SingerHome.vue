@@ -33,15 +33,13 @@
         <!--      foot部分-->
         <template #footer>
           <el-button round style="width: 42%;padding: 5px"  @click="dialogVisible.addNewSong = !dialogVisible.addNewSong">取消</el-button>
-          <el-button round style="width: 42%;padding: 5px;color: white" color="#d5432f"   @click="addNewSongFun(this.addNewSong)">新增</el-button>
+          <el-button round style="width: 42%;padding: 5px;color: white" color="#d5432f"   @click="addNewSongFun">新增</el-button>
         </template>
-
-        <template ></template>
 
       </nut-dialog>
     </nut-button>
 
-    <nut-button>
+    <nut-button @click="$router.push('/singHome/SingerHome/orderToSing')">
       预约演唱
     </nut-button>
     <nut-button @click="getSingerInviteCode">
@@ -52,8 +50,8 @@
           text-align="left"
       >
 
-        <div style="margin-bottom: 5px" >歌手邀请码为 : <strong>{{ singerInviteCode }}</strong></div>
-        <span>(注:同一时间内仅一个邀请码有效，用后即焚)</span>
+        <div style="line-height: 20px" >歌手邀请码为 : <strong>{{ singerInviteCode }}</strong></div>
+        <div style="line-height: 20px">(注:同一时间内仅一个邀请码有效，用后即焚)</div>
 
         <template #footer>
           <el-button round style="width: 42%;padding: 5px"  @click="dialogVisible.getInviteCode = false">取消</el-button>
@@ -69,6 +67,7 @@
 <script>
 import singRequest from "@/utils/singRequest";
 import { reactive} from "vue";
+import {copyText} from "@/utils/ZhangG0CommonUtils.js";
 
 export default {
   name: "AdminAndSinger",
@@ -77,7 +76,9 @@ export default {
       singerInviteCode:'',
       dialogVisible:{
         getInviteCode:false,
-        addNewSong:false
+        addNewSong:false,
+        orderSing:false,
+        dialogPickerShow:false
       },
       addNewSong:{
         songName:"",
@@ -150,6 +151,7 @@ export default {
                 center:true,
                 duration:1000
               })
+              this.addNewSong = {};
             }else {
               this.$message({
                 type:'error',
@@ -163,47 +165,23 @@ export default {
       })
     },
     copy(text){
-      if (text === ""){
+      if (copyText(text)){
+        this.$message.success({
+          message: '复制成功',
+          customClass: 'message',
+          center: true,
+          duration: 1000
+        });
+      }else{
         this.$message.warning({
           message:'并没有邀请码',
           center: true,
           duration:1500
-        })
-      }else {
-        if (navigator.clipboard && window.isSecureContext) {
-          // navigator clipboard 向剪贴板写文本
-          navigator.clipboard.writeText(text).then(() => {
-            this.$message.success({
-              message:'复制成功',
-              customClass:'message',
-              center: true,
-              duration:1000
-            });
-          });
-        } else {
-          // 创建text area
-          let textArea = document.createElement('textarea');
-          textArea.value = text;
-          // 使text area不在viewport，同时设置不可见
-          textArea.style.position = 'absolute';
-          textArea.style.opacity = '0';
-          textArea.style.left = '-999999px';
-          textArea.style.top = '-999999px';
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          // 执行复制命令并移除文本框
-          document.execCommand('copy');
-          this.$message.success({
-            message:'复制成功',
-            customClass:'message',
-            center: true,
-            duration:1000
-          });
-          textArea.remove();
-        }
+        });
+
       }
     }
+
   }
 }
 </script>
@@ -223,7 +201,5 @@ export default {
 
 </style>
 <style>
-.inputDialog>.nut-dialog__content{
-  margin: 20px 0 5px 0 ;
-}
+
 </style>

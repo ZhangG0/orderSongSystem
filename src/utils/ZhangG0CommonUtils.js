@@ -1,11 +1,11 @@
+import dayjs from "dayjs";
 
-export
 /**
  * 将文字内容复制到剪切板(兼容版)
  * @param text 需要复制到剪切板的文字
  * @return {boolean}{Boolean}-代表复制成功与失败
  */
-function copyText(text){
+export function copyText(text){
     text.trim();
     if ("" !== text){
         if (navigator.clipboard && window.isSecureContext) {
@@ -31,4 +31,49 @@ function copyText(text){
     }
     console.log("复制失败，值为空")
     return false;
+}
+
+/**
+ * 将Date.getDay()方法的数字转为中文
+ * @param day
+ * @return {*}
+ */
+export function DayToChinese(day){
+    switch (day){
+        case 0:
+            day = "星期日";break;
+        case 1:
+            day = "星期一";break;
+        case 2:
+            day = "星期二";break;
+        case 3:
+            day = "星期三";break;
+        case 4:
+            day = "星期四";break;
+        case 5:
+            day = "星期五";break;
+        case 6:
+            day = "星期六";break;
+    }
+    return day;
+}
+
+/**
+ * 初始化时间，返回从今天开始后十四天的时间和星期几
+ * @param startTime 开始时间，默认今天
+ * @param loopTime 返回后几天，默认14天
+ * @return {date,day} 返回一个对象里面有两个属性（数组），date和day
+ */
+export function initTime(startTime = dayjs(), loopTime = 14) {
+    const res = {date:[],day:[]};
+    for (let i = 0; i < loopTime; i++){
+        res.date[i] = startTime.format('YYYY-MM-DD');
+        res.day[i] = DayToChinese(startTime.day());
+
+        startTime = startTime.add(1,'day');
+
+    }
+
+    // console.log(res);
+    return res;
 }
