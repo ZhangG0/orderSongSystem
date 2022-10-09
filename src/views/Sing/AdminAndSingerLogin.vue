@@ -35,7 +35,8 @@
 import {reactive} from "vue";
 import singRequest from "@/utils/singRequest";
 import "@/static/css/commonResponse.scss"
-
+import {useUserStore} from "@/store/userStore.js";
+const userStore = useUserStore();
 export default {
   name: "AdminAndSinger",
   data(){
@@ -82,7 +83,8 @@ export default {
     }
   },
   created() {
-    this.form.phone = sessionStorage.getItem("phone") || "";
+    this.form.phone = userStore.userData.phone;
+    // this.form.phone = sessionStorage.getItem("phone") || "";
   },
   methods:{
     login(){
@@ -95,7 +97,7 @@ export default {
             }
           }).then(res =>{
             if (res.status === 200){
-              console.log(res.data);
+              // console.log(res.data);
               let userData = res.data;
               //歌手初始化（为了和用户保持一致，当后端技术库表重构后可以删除）
               //注册时间初始化
@@ -107,12 +109,10 @@ export default {
               userData.major = userData.information;
               //role初始化 歌手为1
               userData.role = 1;
-              //初始化数字中间四位为 *
-              userData.phone = userData.phone.replace(userData.phone.substring(3,7),"****");
-              sessionStorage.setItem("user",JSON.stringify(userData));
+              // sessionStorage.setItem("user",JSON.stringify(userData));
+              userStore.initUser(userData);
               //password实为token
               localStorage.setItem("token",userData.password);
-              // sessionStorage.setItem("user",{role:1});
               this.$router.push("/singHome/SingerHome");
             }else {
               this.$message({

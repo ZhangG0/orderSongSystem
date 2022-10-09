@@ -50,7 +50,7 @@
     </nut-cell-group>
 
     <nut-button disabled>修改密码(暂不支持)</nut-button>
-    <nut-button style="margin-top: 0.5vh" type="danger"  @click="test">退出登录</nut-button>
+    <nut-button style="margin-top: 0.5vh" type="danger"  @click="logout">退出登录</nut-button>
 
   </div>
 
@@ -58,36 +58,31 @@
 
 <script>
 import "@/static/css/commonResponse.scss"
+import {useUserStore} from "@/store/userStore.js";
+
+const userStore = useUserStore();
 
 export default {
   name: "PersonInfo",
   data(){
     return{
       //0为用户 1为歌手
-      role:0,
       user:{},
     }
   },
   created() {
     //刷新父组件的兄弟组件（header）
     this.$emit('score-change');
-    this.user = JSON.parse(sessionStorage.getItem("user"));
+    this.user = userStore.userData;
+    this.user.phone = userStore.getPhone;
     //判断是否登录
-    if (!this.user){
+    if (this.user.id === -1){
       this.$router.push('/singHome/Login')
-    }else {
-      //判断是User还是Singer
-      this.username = JSON.parse(sessionStorage.getItem("user")).singerName;
-      if (!this.username){
-        this.username = JSON.parse(sessionStorage.getItem("user")).username;
-        this.role = 0;
-      }else {
-        this.role = 1;
-      }
     }
   },
   methods: {
-    test(){
+    logout(){
+      userStore.$reset();
       sessionStorage.removeItem("user");
       this.$router.push("/singHome");
     }

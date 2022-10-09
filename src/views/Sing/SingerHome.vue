@@ -68,7 +68,9 @@
 import singRequest from "@/utils/singRequest";
 import { reactive} from "vue";
 import {copyText} from "@/utils/ZhangG0CommonUtils.js";
+import {useUserStore} from "@/store/userStore.js";
 
+const userStore = useUserStore();
 export default {
   name: "AdminAndSinger",
   data(){
@@ -83,7 +85,7 @@ export default {
       addNewSong:{
         songName:"",
         ogSinger:"",
-        singer:JSON.parse(sessionStorage.getItem("user")).singerName
+        singer:userStore.userData.singerName,
       },
       rules:reactive({
         ogSinger:[
@@ -106,11 +108,10 @@ export default {
   created() {
     //监测是否登录
     this.$emit('score-change');
-    if (!sessionStorage.user && !localStorage.user){
+    if (userStore.userData.id === -1){
       this.$router.push("/singHome/ManagementSystemLogin");
-    }else if (!(JSON.parse(sessionStorage.getItem("user")).singerName)
-           && !JSON.parse(localStorage.getItem("user")).singerName){
-      //判断了user里是否有singerName键 若没有则为用户
+    }else if (userStore.userData.singerName === null){
+      //判断了user里是否有singerName 若没有则为用户
       this.$router.push("/singHome");
     }
 

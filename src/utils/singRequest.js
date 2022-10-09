@@ -1,10 +1,11 @@
 import axios from "axios";
 import router from "@/router";
-
+import {useUserStore} from "@/store/userStore.js";
+const userStore = useUserStore();
 
 const singRequest = axios.create({
-    // baseURL:'https://www.jzilong.com:9999/',
-    baseURL:'http://localhost:9999/',
+    baseURL:'https://www.jzilong.com:9999/',
+    // baseURL:'http://localhost:9999/',
     // baseURL:'http://150.158.58.129:9999/',
     timeout:5000
 })
@@ -29,6 +30,7 @@ singRequest.interceptors.response.use(response => {
 
         if (res.status === -99){
             sessionStorage.removeItem("user")
+            userStore.$reset();
             router.replace('/singHome');
         }
         return res;

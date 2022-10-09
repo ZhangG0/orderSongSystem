@@ -257,7 +257,6 @@ export default {
                     center: true,
                     duration:1000
                   })
-                  sessionStorage.setItem("phone",this.form.phone)
                   this.$router.push("/singHome/Login")
                 }else {
                   this.$message({

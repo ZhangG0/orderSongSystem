@@ -33,7 +33,8 @@
 import singRequest from "@/utils/singRequest";
 import {reactive} from "vue";
 import "@/static/css/commonResponse.scss"
-
+import {useUserStore} from "@/store/userStore.js";
+const userStore = useUserStore();
 export default {
   name: "UserLogin",
   data(){
@@ -90,12 +91,10 @@ export default {
               //注册时间初始化
               let arr = userData.registerTime.split(' ');
               userData.registerTime = arr[0];
-              //初始化数字中间四位为 *
-              userData.phone = userData.phone.replace(userData.phone.substring(3,7),"****");
               //role初始化 用户为0
               userData.role = 0;
               //数据写入session
-              sessionStorage.setItem("user",JSON.stringify(userData));
+              userStore.initUser(userData);
               localStorage.setItem("token",userData.password);
               // window.location.replace("/singHome")
               this.$router.push("/singHome")

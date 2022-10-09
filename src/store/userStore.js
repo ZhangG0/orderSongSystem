@@ -4,9 +4,9 @@ import {defineStore} from "pinia";
 export const useUserStore = defineStore("user", {
     state: () => {
         return {
-            userData:{
+            userData: {
                 id: -1,
-                phone: "",
+                phone: null,
                 singerName: null,
                 username: null,
                 avatarName: null,
@@ -14,34 +14,38 @@ export const useUserStore = defineStore("user", {
                 backImgName: null,
                 backImgUrl: null,
                 good: 0,
-                information:null,
-                introduction:"",
-                lastTime:null,
-                major:null,
-                mySing:null,
-                registerTime:null,
-                role:null,
+                information: null,
+                introduction: "",
+                lastTime: null,
+                major: null,
+                mySing: null,
+                registerTime: null,
+                role: null,
             },
-            test:"change?",
-
-    }
+            phoneNumber:""
+        }
     },
-    getters:{
-      getPhone(){
-          if (this.userData.phone){
-              return this.userData.phone.replace(this.userData.phone.substring(3, 7), "****");
-          }else {
-              return undefined;
-          }
-      }
+    getters: {
+        getPhone(){
+            if (this.phoneNumber) {
+                return this.phoneNumber.replace(this.phoneNumber.substring(3, 7), "****");
+            } else {
+                return undefined;
+            }
+        },
+        getUserData(){
+            return this.userData;
+        }
     },
-    actions:{
+    actions: {
         initUser(Data){
+            this.phoneNumber = Data.phone;
             this.userData = Data;
         }
     },
+    // persist:true
     persist: {
-        enabled:true,
+        enabled: true,
         storage: sessionStorage,
         paths: ['userData'],
     },

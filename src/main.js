@@ -3,9 +3,6 @@ import App from './App.vue'
 import router from './router'
 //引入dayjs
 import dayjs from 'dayjs'
-//引入pinia 以及持久化
-import {createPinia} from "pinia";
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 //引入ElementPlus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -22,13 +19,17 @@ import VueWechatTitle from 'vue-wechat-title'
 import * as ElIconModules from '@element-plus/icons-vue'
 //引入iconfont图标
 import '@/assets/fonts/iconfont.css'
+//注册pinia
+import { createPinia } from 'pinia';
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
 
 
 
 
 const app = createApp(App);
-const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
+
 //  统一注册el-icon图标
 for(let iconName in ElIconModules){
     app.component(iconName,ElIconModules[iconName]);

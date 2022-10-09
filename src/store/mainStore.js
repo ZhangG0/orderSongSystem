@@ -11,10 +11,14 @@ export const mainStore = defineStore('main',{
         }
     },
     getters: {
-
+        getMSG(){
+            return this.msg+"changed";
+        }
     },
     actions: {
-
+        getMSGFun(){
+            return this.msg+"changed!!!!!!!!!!!!!!!!!!!!!!1";
+        }
     },
 })
 

@@ -34,6 +34,10 @@
 </template>
 
 <script>
+import {useUserStore} from "@/store/userStore.js";
+// import pinia from "@/store/index.js";
+//
+// const userStore = useUserStore(pinia);
 export default {
   name: "SingHeader",
   data(){
@@ -46,16 +50,13 @@ export default {
     }
   },
   created() {
-    // sessionStorage.setItem("username","江子麟")
-
+    const userStore = useUserStore();
     //判断是否登录，登录的是歌手还是用户
-    if (!sessionStorage.getItem("user")){
+    if (userStore.userData.id === -1){
       this.userShow=false;
     }else {
-      this.username = JSON.parse(sessionStorage.getItem("user")).singerName;
-      if (!this.username){
-        this.username = JSON.parse(sessionStorage.getItem("user")).username;
-      }
+      //登陆时会把singerName赋值给username
+        this.username = userStore.userData.username;
     }
     //判断是否需要显示title
     this.titleShow = !this.whiteTitle.includes(this.title);
@@ -63,7 +64,8 @@ export default {
 
   methods:{
     toSingHome(){
-      if (!sessionStorage.getItem("user")){
+      const userStore = useUserStore();
+      if (userStore.userData.id === -1){
         this.$router.push('/singHome/Login')
       }else {
         this.$router.push('/singHome')
@@ -71,7 +73,8 @@ export default {
 
     },
     toManagementSystem(){
-      if (!sessionStorage.getItem("user") || !JSON.parse(sessionStorage.getItem("user")).singerName){
+      const userStore = useUserStore();
+      if (!userStore.userData.id === -1 || !userStore.userData.singerName){
           this.$router.push('/singHome/ManagementSystemLogin');
         }else {
         this.$router.push('/singHome/singerHome');
@@ -80,7 +83,11 @@ export default {
 
     },
     back(){
-      this.$router.back();
+      if (this.$route.name === "UserLogin" || ["ManagementSystemLogin"].includes(this.$route.name)){
+        this.$router.replace('/singHome')
+      }else {
+        this.$router.back();
+      }
     },
     toPersonInfo(){
       this.$router.push('/singHome/personInfo');

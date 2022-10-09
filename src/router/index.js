@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '../layout/layout.vue'
 import singLayout from '../layout/singLayout.vue'
 import singNoBgLayout from "@/layout/singNoBgLayout.vue";
+import {useUserStore} from "@/store/userStore.js";
 
 const routes = [
   {
@@ -238,8 +239,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   //路由守卫，访问权限配置
+  const userStore = useUserStore();
   if (to.meta.Authentication){ //若进入的是受保护的网页则验明身份
-    if (localStorage.getItem("token") && sessionStorage.getItem("user")){
+    if (localStorage.getItem("token") && userStore.userData.id !== -1 ){
       next()
     }else {
       alert("无访问权限,请登录");
