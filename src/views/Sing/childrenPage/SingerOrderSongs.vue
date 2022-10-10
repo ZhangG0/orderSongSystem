@@ -234,7 +234,7 @@ const submitForm = () =>{
             })
           }else
             if (res.status === -98){
-            console.log(res)
+            // console.log(res)
             ElMessageBox.confirm(
                 `该歌手信息如下:演唱歌手-${res.data[0].tdSinger} | 歌名-${res.data[0].songName+" "+res.data[0].ogSinger}(更多歌手请查询今日歌单)
                 请确认你还要继续演唱么？`,
