@@ -1,5 +1,5 @@
 
-/*展示列表响应式*/
+/*展示列表响应式*****************************/
 .SingerListDiv{
     width: 85vw;
     margin-top: 3vh;
@@ -21,49 +21,63 @@
         margin-bottom: 5vh;
     }
 }
+/******************************************/
 
-/*ElementPlus 按钮响应式*/
-.el-input,.el-button,.el-dialog,.el-select{
-    width: 75vw;
-    /* margin-top: 10%; */
-
-}
-
-@media screen and (min-width: 780px){
+/*按钮,输入框,弹出框,选择框响应式**********************/
+.background_div,.background_div_color{
+    /*ElementPlus 按钮响应式*/
     .el-input,.el-button,.el-dialog,.el-select{
-        width: 50vw;
-
-
-    }
-}
-
-@media screen and (min-width: 1400px){
-    .el-input,.el-button,.el-dialog,.el-select{
-        width: 30vw;
-
+        width: 75vw;
+        /* margin-top: 10%; */
 
     }
-}
 
-/*NutUI 按钮响应式*/
-.nut-cell,.nut-button{
-    width: 90vw;
-    /* margin-top: 10%; */
+    @media screen and (min-width: 780px){
+        .el-input,.el-button,.el-dialog,.el-select{
+            width: 50vw;
 
-}
 
-@media screen and (min-width: 900px){
+        }
+    }
+
+    @media screen and (min-width: 1400px){
+        .el-input,.el-button,.el-dialog,.el-select{
+            width: 30vw;
+
+
+        }
+    }
+
+    /*NutUI 按钮响应式*/
     .nut-cell,.nut-button{
-        width: 60vw;
-
-
-    }
-}
-
-@media screen and (min-width: 1600px){
-    .nut-cell,.nut-button{
-        width: 40vw;
-
+        width: 90vw;
+        /* margin-top: 10%; */
 
     }
+
+    @media screen and (min-width: 900px){
+        .nut-cell,.nut-button{
+            width: 60vw;
+
+
+        }
+    }
+
+    @media screen and (min-width: 1600px){
+        .nut-cell,.nut-button{
+            width: 40vw;
+
+
+        }
+    }
+
 }
+/*按钮,输入框,弹出框,选择框响应式**********************/
+
+/*ElMessageBox响应式*******************************/
+@media screen and (max-width: 580px){
+    .el-message-box{
+        width: 80vw;
+    }
+}
+/*ElMessageBox响应式*******************************/
