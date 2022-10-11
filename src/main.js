@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+//解决控制台警告
+import 'default-passive-events'
 //引入dayjs
 import dayjs from 'dayjs'
 //引入ElementPlus
