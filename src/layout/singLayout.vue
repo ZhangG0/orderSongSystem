@@ -4,7 +4,10 @@
     <SingHeader v-if="update" ref="signIn"></SingHeader>
     <SingBackground></SingBackground>
 <!--    score-change自定义事件 内部组件使用this.$emit('score-change')调用-->
-    <router-view @score-change="reload"></router-view>
+
+    <slot>
+      <router-view @score-change="reload"></router-view>
+    </slot>
   </div>
 
 </template>
@@ -16,7 +19,7 @@ import SingHeader from "@/components/Sing/SingHeader";
 export default {
   name: "singLayout",
   components: {
-    SingHeader, 
+    SingHeader,
     SingBackground
     },
   data() {

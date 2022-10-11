@@ -5,7 +5,7 @@
     <div class="item" v-for="(item,index) in singerData">
       <div class="leftItem">
         <span style="font-size: large">《{{item.songName}}》<br/></span>
-        <span>&nbsp;&nbsp;&nbsp;{{item.ogSinger}}</span>
+        <span style="color:grey;font-size: small">&nbsp;&nbsp;- {{item.ogSinger}}</span>
       </div>
 
       <div class="rightItem">
