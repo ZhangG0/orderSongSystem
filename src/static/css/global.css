@@ -8,13 +8,13 @@
 /* 点歌系统用 */
 .background_div{
     background-color: transparent;
-    color: white;
+    /*color: white;*/
     padding: 2.6vh 0 3vh 0;
 
 }
 
 .background_div_color{
-    color: black;
+    /*color: black;*/
     width: 100vw;
     padding: 2.6vh 0 3vh 0;
     background-color: #f6f7f9;
