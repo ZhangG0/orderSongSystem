@@ -1,17 +1,44 @@
 <template>
-  <div>
-    {{test}}
-    666666666666666666666666666
-    <button @click="login">TEST BUTTON</button>
-    <button @click="testFun">TEST BUTTON2</button>
-    <div>
-      用户信息：<br/>
-      name:{{users.userData.username}}<br/>
-      phone:{{users.userData.phone}}<br/>
-<!--      id:{{userData.id}}<br/>-->
-<!--      role:{{userData.role}}-->
+  <SingLayout>
+    <div class="flexCenter">
+      {{test}}
+      666666666666666666666666666
+      <button @click="login">TEST BUTTON</button>
+      <button @click="testFun">TEST BUTTON2</button>
+      <div>
+        用户信息：<br/>
+        name:{{users.userData.username}}<br/>
+        phone:{{users.userData.phone}}<br/>
+        <!--      id:{{userData.id}}<br/>-->
+        <!--      role:{{userData.role}}-->
+      </div>
+
+      <sing-cell-group
+          group-title="AM"
+          text-center
+      >
+        <Sing-cell
+            left-main="说好的幸福呢"
+            left-sub="周杰伦"
+            right-main="江子麟"
+        ></Sing-cell>
+
+        <Sing-cell
+            left-main="说好的幸福呢"
+            left-sub="周杰伦"
+            right-main="江子麟"
+        ></Sing-cell>
+
+        <Sing-cell
+            left-main="说好的幸福呢"
+            left-sub="周杰伦"
+            right-main="江子麟"
+        ></Sing-cell>
+      </sing-cell-group>
+
     </div>
-  </div>
+  </SingLayout>
+
 
 </template>
 <script setup>
@@ -19,6 +46,9 @@ import {mainStore} from '@/store/mainStore.js'
 import {useUserStore} from "@/store/userStore.js";
 import singRequest from "@/utils/singRequest.js";
 import {storeToRefs} from "pinia";
+import SingCell from "@/components/Sing/SingCell.vue";
+import SingCellGroup from "@/components/Sing/SingCellGroup.vue";
+import SingLayout from "@/layout/singLayout.vue";
 const pinia = mainStore();
 const users = useUserStore();
 const { test } = storeToRefs(users);
