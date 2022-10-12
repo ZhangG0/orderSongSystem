@@ -43,8 +43,9 @@
 
 
 			<div>
-				<el-button icon="Mic" color="#fe5339" round @click="this.$router.push('/singHome/OrderSong')">我要点歌</el-button>
+				<el-button icon="Mic" color="#fe5339" round @click="this.$messageBox.alert('攻城狮正在加急开发中！')">我要点歌</el-button>
 			</div>
+<!--      this.$router.push('/singHome/OrderSong')-->
 			<div>
 				<el-button color="#ff7416" round @click="this.$messageBox.alert('攻城狮正在加急开发中！')">本周歌手</el-button>
 			</div>
