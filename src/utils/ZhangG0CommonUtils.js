@@ -11,15 +11,7 @@ export function copyText(text){
     if ("" !== text){
         if (navigator.clipboard && window.isSecureContext) {
             // navigator clipboard 向剪贴板写文本
-            navigator.clipboard.writeText(text).then(
-                ElMessage({
-                    type:"success",
-                    message:"复制成功",
-                    center: true,
-                    duration:1000
-                })
-            );
-            return true
+            navigator.clipboard.writeText(text).then();
         } else {
             // 创建text area
             let textArea = document.createElement('textarea');
