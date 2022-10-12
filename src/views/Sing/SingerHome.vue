@@ -166,21 +166,7 @@ export default {
       })
     },
     copy(text){
-      if (copyText(text)){
-        this.$message.success({
-          message: '复制成功',
-          customClass: 'message',
-          center: true,
-          duration: 1000
-        });
-      }else{
-        this.$message.warning({
-          message:'并没有邀请码',
-          center: true,
-          duration:1500
-        });
-
-      }
+      copyText(text)
     }
 
   }
