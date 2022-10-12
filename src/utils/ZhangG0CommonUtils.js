@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import {ElMessage} from "element-plus";
 
 /**
  * 将文字内容复制到剪切板(兼容版)
@@ -10,7 +11,15 @@ export function copyText(text){
     if ("" !== text){
         if (navigator.clipboard && window.isSecureContext) {
             // navigator clipboard 向剪贴板写文本
-            navigator.clipboard.writeText(text).then();
+            navigator.clipboard.writeText(text).then(
+                ElMessage({
+                    type:"success",
+                    message:"复制成功",
+                    center: true,
+                    duration:1000
+                })
+            );
+            return true
         } else {
             // 创建text area
             let textArea = document.createElement('textarea');
@@ -27,9 +36,15 @@ export function copyText(text){
             document.execCommand('copy');
             textArea.remove();
         }
+            ElMessage({
+                type:"success",
+                message:"复制成功",
+                center: true,
+                duration:1000
+            })
         return true
     }
-    console.log("复制失败，值为空")
+    ElMessage.success("复制失败，值为空")
     return false;
 }
 
