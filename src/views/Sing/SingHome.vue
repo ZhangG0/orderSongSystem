@@ -110,7 +110,7 @@ export default {
 	.div_body{
 		width: 100%;
 		/* 固定高度防止滑动 */
-		height: 100vh;
+    /*height: 100vh;*/
 		overflow: hidden;
 		z-index: -100;
 	}
