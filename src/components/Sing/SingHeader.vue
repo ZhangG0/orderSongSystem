@@ -42,11 +42,11 @@ export default {
   name: "SingHeader",
   data(){
     return{
-      username:"",
-      userShow:true,
-      titleShow:true,
-      whiteTitle:["校声乐队点歌系统","今日歌单","曲库大全","歌手管理后台登录","i点歌---校声乐队点歌系统"],
-      title:this.$route.meta.title,
+      username: "",
+      userShow: true,
+      titleShow: true,
+      whiteTitle: ["校声乐队点歌系统", "今日歌单", "曲库大全", "歌手管理后台登录", "i点歌---校声乐队点歌系统", "开发者的话"],
+      title: this.$route.meta.title,
     }
   },
   created() {

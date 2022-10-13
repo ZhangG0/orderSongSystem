@@ -205,20 +205,28 @@ const routes = [
     redirect:'/singHome',
     children: [
       {
-        path:'/singHome/About',
-        name:'About',
-        component:() => import("@/views/Sing/About"),
-        meta:{
-          title:'关于我们',
+        path: '/singHome/About',
+        name: 'About',
+        component: () => import("@/views/Sing/About"),
+        meta: {
+          title: '关于我们',
         }
       },
       {
-        path:'/singHome/SingerHome/orderToSing',
-        name:'orderToSing',
-        component:() => import("@/views/Sing/childrenPage/SingerOrderSongs.vue"),
-        meta:{
-          title:'预约演唱',
-          Authentication:true
+        path: '/singHome/About/MyWords',
+        name: 'MyWords',
+        component: () => import("@/views/Sing/childrenPage/MyWords.vue"),
+        meta: {
+          title: '开发者的话',
+        }
+      },
+      {
+        path: '/singHome/SingerHome/orderToSing',
+        name: 'orderToSing',
+        component: () => import("@/views/Sing/childrenPage/SingerOrderSongs.vue"),
+        meta: {
+          title: '预约演唱',
+          Authentication: true
         },
       },
     ]
@@ -231,7 +239,7 @@ const router = createRouter({
   // history模式
   history: createWebHistory(process.env.BASE_URL),
 
-  // // Hash模式 开发暂用
+  // // Hash模式
   // history: createWebHashHistory(process.env.BASE_URL),
   routes
 
