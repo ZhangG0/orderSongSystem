@@ -147,12 +147,13 @@ export default {
             console.log(this.addNewSong);
             if (res.status === 200){
               this.$message({
-                type:'success',
-                message:'新增成功',
-                center:true,
-                duration:1000
+                type: 'success',
+                message: '新增成功',
+                center: true,
+                duration: 1000
               })
-              this.addNewSong = {};
+              this.addNewSong.songName = "";
+              this.addNewSong.ogSinger = "";
             }else {
               this.$message({
                 type:'error',
