@@ -3,6 +3,7 @@
   <div class="background_div_color flexCenter">
     <el-form
         v-loading.fullscreen.lock="loading.isLoading"
+        :element-loading-text="loading.text"
         class="form flexCenter"
         :model="formData"
         :rules="rules"
@@ -18,7 +19,7 @@
             size="large"
         >
           <el-option
-              v-for="(item, index) in songOptions"
+              v-for="(item, index) in songOptions.arr"
               :label="item.songName"
               :value="index"
           >
@@ -94,7 +95,8 @@
             size="large"
             round
             @click="$router.back()"
-        >暂不预约</el-button>
+        >暂不预约
+        </el-button>
 
       </el-form-item>
 
@@ -104,6 +106,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "SingerOrderSongs",
+}
+</script>
+
 <script setup>
 import {reactive, ref} from "vue";
 import {initTime} from "@/utils/ZhangG0CommonUtils.js";
@@ -111,7 +119,6 @@ import '@/static/css/commonResponse.scss'
 import {useUserStore} from "@/store/userStore.js";
 import singRequest from "@/utils/singRequest.js";
 import {ElMessage, ElMessageBox} from "element-plus";
-
 
 const userInfoStore = useUserStore();
 const formData = reactive({
@@ -143,50 +150,48 @@ const rules = reactive({
       trigger: 'change'
     }
   ]
-})
-const songOptions = [
-  {
-    songName: "说散就散",
-    ogSinger: "袁娅维"
-  },
-  {
-    songName: "说散就散2",
-    ogSinger: "袁娅维"
-  },
-  {
-    songName: "测试歌曲",
-    ogSinger: "测试歌手"
-  },
-  {
-    songName: "说散就散3",
-    ogSinger: "袁娅维"
-  },
-  {
-    songName: "说散就散3",
-    ogSinger: "袁娅维2"
-  },
-  {
-    songName: "说散就散5",
-    ogSinger: "袁娅维"
-  }
-]
+});
 const loading = reactive({
-  isLoading:false,
-  text:"正在预约中"
+  isLoading: false,
+  text: "正在预约中"
 
-})
+});
+const songOptions = reactive({arr: []});
+
+async function initSongs() {
+  const parameter = {
+    phone: userInfoStore.phoneNumber
+  };
+  await singRequest.post("/singer/getMySongs", parameter).then(res => {
+    if (res.status === 200) {
+      songOptions.arr = res.data
+
+    } else {
+      ElMessage({
+        type: 'error',
+        duration: 1000,
+        message: '系统错误,可选歌曲异常',
+        center: true
+      })
+    }
+  })
+
+}
+
+initSongs();
+
 /**
- * 初始化时间与星期一二三四五六日
+ * 初始化时间（Date）与星期一二三四五六日
  * 初始化可选的歌曲
  * @return {[]}
  */
 function timeFun() {
   const res = [];
-  const {date,day} = initTime();
-  let loopTime = Math.min(date.length,day.length)
+  const {date, day} = initTime();
+  let loopTime = Math.min(date.length, day.length)
 
-  for (let i = 0;i < loopTime ;i++){
-    res[i] = {value:date[i],label:day[i]};
+  for (let i = 0; i < loopTime; i++) {
+    res[i] = {value: date[i], label: day[i]};
   }
   formData.date = res[0].value
   return res;
@@ -196,7 +201,6 @@ const timeOptions = timeFun();
 /**
  * 提交预约按钮，多个的话将分为多次提交
  */
-
 const submitForm = () =>{
   form.value.validate((valid)=>{
     if (valid){
