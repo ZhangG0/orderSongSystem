@@ -1,6 +1,7 @@
 import axios from "axios";
 import router from "@/router";
 import {useUserStore} from "@/store/userStore.js";
+import {ElMessage} from "element-plus";
 const userStore = useUserStore();
 
 const singRequest = axios.create({
@@ -36,6 +37,15 @@ singRequest.interceptors.response.use(response => {
         return res;
     },
     error => {
+        if (error.message === "timeout of 5000ms exceeded") {
+            error.message += "请求超时5秒"
+            ElMessage({
+                type: 'error',
+                message: '请求超时',
+                duration: 1000,
+                center: true
+            })
+        }
         console.log('err' + error) // for debug
         return Promise.reject(error)
     }
