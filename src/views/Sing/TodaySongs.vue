@@ -6,7 +6,7 @@
 
   <div v-if="already">
     <sing-cell-group
-        :group-title="todaySongsData.AM.length === 0?'上午暂无演唱计划':'PM'"
+        :group-title="todaySongsData.AM.length === 0?'上午暂无演唱计划':'AM'"
         text-center
     >
       <sing-cell
@@ -56,7 +56,10 @@ export default {
     singRequest.get("/today/todayList").then(res => {
       if (res.status === 200) {
         this.todaySongsData = res.data
-        this.already = true;
+        if (res.data.AM.length + res.data.PM.length !== 0) {
+          this.already = true;
+        }
+
       } else {
         this.$message({
           type: 'error',
