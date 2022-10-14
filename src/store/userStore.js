@@ -47,6 +47,6 @@ export const useUserStore = defineStore("user", {
     persist: {
         enabled: true,
         storage: sessionStorage,
-        paths: ['userData'],
+
     },
 })
